@@ -5,8 +5,11 @@ import java.util.Random;
 import java.sql.Time;
 
 public class TimeTable {
-
-    private String month, name, time; // название судна, день прибытия
+    
+    // название судна, день прибытия
+    private String month;
+    private String name;
+    private String time;
     private int day;
 
     public TimeTable(){}
