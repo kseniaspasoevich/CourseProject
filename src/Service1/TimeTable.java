@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 
 public class TimeTable {
 
-    //содержимое расписания
+    //содержимое расписания, входит json файл
     private String name; //название судна
     private Time time; //время прибытия
     private LocalDate day; //день прибытия
@@ -56,10 +56,10 @@ public class TimeTable {
     }
 
     public void generateWeight() { //случайная генерация веса груза на основе типа
-        weight = generateType();
+        weight=generateType();
         DecimalFormat df2 = new DecimalFormat("#.##");
 
-        switch (weight) {
+        switch (generateType()) {
             case CONTAINER -> {
                 System.out.println(df2.format(weight.generateContainerWeight())+" tones");
             }
