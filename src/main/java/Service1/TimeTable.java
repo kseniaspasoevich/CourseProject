@@ -16,7 +16,66 @@ public class TimeTable {
     private typeAndWeight weight; //вес груза
     private typeAndWeight unload; //Время разгрузки
 
-    public void generateName() { //случайная генерация имени (String+random int between 1 and 1000)
+    public TimeTable() {}
+
+    public TimeTable(String name, Time time, LocalDate day, typeAndWeight type, typeAndWeight weight, typeAndWeight unload) {
+        this.name = name;
+        this.time = time;
+        this.day = day;
+        this.type = type;
+        this.weight = weight;
+        this.unload = unload;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public LocalDate getDay() {
+        return day;
+    }
+
+    public void setDay(LocalDate day) {
+        this.day = day;
+    }
+
+    public typeAndWeight getType() {
+        return type;
+    }
+
+    public void setType(typeAndWeight type) {
+        this.type = type;
+    }
+
+    public typeAndWeight getWeight() {
+        return weight;
+    }
+
+    public void setWeight(typeAndWeight weight) {
+        this.weight = weight;
+    }
+
+    public typeAndWeight getUnload() {
+        return unload;
+    }
+
+    public void setUnload(typeAndWeight unload) {
+        this.unload = unload;
+    }
+
+    public String generateName() { //случайная генерация имени (String+random int between 1 and 1000)
 
         String[] listOfNames = {"Aurora", "Aqua", "Neva", "Lusitania2", "MikhailSvetlov", "Olimpic", "Titanic3", "Titan", "Danube",
                 "Sava", "BelgradeRiver", "Moscow", "Spb", "Maurithania", "FinlandBay", "Blue", "Ocean", "Anchor",
@@ -28,22 +87,23 @@ public class TimeTable {
         int randomName2 = (int) (Math.random() * 1000);
         var s = String.valueOf(randomName2);
         name = randomName2 + randomName1;
-        System.out.println(name);
+        return name;
     }
 
-    public void generateTime() { //случайная генерация времени
+    public Time generateTime() { //случайная генерация времени
         final Random random = new Random();
         final int millisInDay = 24 * 60 * 60 * 1000;
         time=new Time((long) random.nextInt(millisInDay));
-        System.out.println(time);
+        return time;
     }
 
-    public void generateDay() { //случайная генерация даты
+    public LocalDate generateDay() { //случайная генерация даты
         final Random random = new Random();
         int firstDay = (int) LocalDate.of(2020, 11, 1).toEpochDay();
         int lastDay = (int) LocalDate.of(2020, 11, 30).toEpochDay();
         long randomDay = firstDay + random.nextInt(lastDay - firstDay);
-        System.out.println(day = LocalDate.ofEpochDay(randomDay));
+        day = LocalDate.ofEpochDay(randomDay);
+        return day;
     }
 
     public typeAndWeight generateType() { //случайная генерация типа
@@ -55,49 +115,41 @@ public class TimeTable {
         return type;
     }
 
-    public void generateWeight() { //случайная генерация веса груза на основе типа
+    public double generateWeight() { //случайная генерация веса груза на основе типа
         weight=generateType();
         DecimalFormat df2 = new DecimalFormat("#.##");
 
-        switch (generateType()) {
-            case CONTAINER -> {
-                System.out.println(df2.format(weight.generateContainerWeight())+" tones");
-            }
-            case LIQUID -> {
-                System.out.println(df2.format(weight.generateTankerWeight())+" tones");
-            }
-            case BULK -> {
-                System.out.println(df2.format(weight.generateBulkerWeight())+" tones");
-            }
-            default -> throw new IllegalStateException("Unexpected value: " + weight);
+        if (weight==typeAndWeight.CONTAINER) {
+            return weight.generateContainerWeight();
+
+        } else if (weight==typeAndWeight.LIQUID){
+            return weight.generateTankerWeight();
+        } else {
+            return weight.generateBulkerWeight();
         }
     }
 
-    public void generateTimeOfUnloading() {
+    public double generateTimeOfUnloading() {
         unload = generateType();
         DecimalFormat df1 = new DecimalFormat("#.#");
-        switch (unload) {
-            case CONTAINER -> {
-                System.out.println(df1.format(unload.generateContainerTime())+" minutes");
-            }
-            case LIQUID -> {
-                System.out.println(df1.format(unload.generateTankerTime())+" minutes");
-            }
-            case BULK -> {
-                System.out.println(df1.format(unload.generateBulkerTime())+" minutes");
-            }
-            default -> throw new IllegalStateException("Unexpected value: " + unload);
+        if (unload==typeAndWeight.CONTAINER) {
+            return unload.generateContainerTime();
+
+        } else if (unload==typeAndWeight.LIQUID){
+            return unload.generateTankerTime();
+        } else {
+            return unload.generateBulkerWeight();
         }
     }
 
     public void generateTimeTable(int amountOfShips){
         for(int i=0; i<amountOfShips; i++){
-            generateName();
-            generateTime();
-            generateDay();
+            System.out.println(generateName());
+            System.out.println(generateDay());
+            System.out.println(generateTime());
             System.out.println(generateType());
-            generateWeight();
-            generateTimeOfUnloading();
+            System.out.println(generateWeight());
+            System.out.println(generateTimeOfUnloading());
             System.out.println("-----------------------");
         }
     }
