@@ -1,36 +1,26 @@
 package Service2;
+
 import Service1.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-
 import java.io.IOException;
-import java.io.StringWriter;
-import java.sql.Time;
-import java.time.LocalDate;
+import java.util.Scanner;
 
 
 public class WorkWithJSON {
     public static void main(String[] args) throws IOException {
-    TimeTable obj=new TimeTable();
-    String someName=obj.generateName();
-    Time someTime=obj.generateTime();
-    LocalDate someDay=obj.generateDay();
-    typeAndWeight someType=obj.generateType();
-    double someWeight=obj.generateWeight();
-    double someUnload=obj.generateTimeOfUnloading();
 
-    obj.setDay(someDay);
-    obj.setName(someName);
-    obj.setTime(someTime);
-    obj.setType(someType);
-    //obj.setWeight(someWeight);
-    //obj.setUnload(someUnload);
+        System.out.println("Внесите колличество судн: ");
+        Scanner scan=new Scanner(System.in);
+        int input=scan.nextInt();
 
-    ObjectMapper objectMapper=new ObjectMapper();
-    StringWriter stringEmp = new StringWriter();
-    objectMapper.writeValue(stringEmp, obj);
-    System.out.println(stringEmp);
-
+        System.out.println("JSON файл: ");
+        TimeTable obj=new TimeTable();
+        for (int i=0; i<input; i++){
+            ObjectMapper objectMapper=new ObjectMapper();
+            String json=objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+            System.out.println(json);
+            System.out.println("----------------");
+        }
     }
 
 }

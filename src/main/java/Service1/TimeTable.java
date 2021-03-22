@@ -16,66 +16,23 @@ public class TimeTable {
     private typeAndWeight weight; //вес груза
     private typeAndWeight unload; //Время разгрузки
 
+    //конструкторы
+    public TimeTable(int amountOfShips) {
+        for (int i = 0; i < amountOfShips; i++) {
+            System.out.println(getName());
+            System.out.println(getTime());
+            System.out.println(getDay());
+            System.out.println(getType());
+            System.out.println(getWeight());
+            System.out.println(getUnload());
+            System.out.println("-------------------------");
+        }
+    }
+
     public TimeTable() {}
 
-    public TimeTable(String name, Time time, LocalDate day, typeAndWeight type, typeAndWeight weight, typeAndWeight unload) {
-        this.name = name;
-        this.time = time;
-        this.day = day;
-        this.type = type;
-        this.weight = weight;
-        this.unload = unload;
-    }
-
+    //геттеры и сеттеры
     public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Time getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
-        this.time = time;
-    }
-
-    public LocalDate getDay() {
-        return day;
-    }
-
-    public void setDay(LocalDate day) {
-        this.day = day;
-    }
-
-    public typeAndWeight getType() {
-        return type;
-    }
-
-    public void setType(typeAndWeight type) {
-        this.type = type;
-    }
-
-    public typeAndWeight getWeight() {
-        return weight;
-    }
-
-    public void setWeight(typeAndWeight weight) {
-        this.weight = weight;
-    }
-
-    public typeAndWeight getUnload() {
-        return unload;
-    }
-
-    public void setUnload(typeAndWeight unload) {
-        this.unload = unload;
-    }
-
-    public String generateName() { //случайная генерация имени (String+random int between 1 and 1000)
 
         String[] listOfNames = {"Aurora", "Aqua", "Neva", "Lusitania2", "MikhailSvetlov", "Olimpic", "Titanic3", "Titan", "Danube",
                 "Sava", "BelgradeRiver", "Moscow", "Spb", "Maurithania", "FinlandBay", "Blue", "Ocean", "Anchor",
@@ -90,23 +47,38 @@ public class TimeTable {
         return name;
     }
 
-    public Time generateTime() { //случайная генерация времени
+    public void setName(String name) {
+
+        this.name = name;
+    }
+
+    public Time getTime() {
+
         final Random random = new Random();
         final int millisInDay = 24 * 60 * 60 * 1000;
         time=new Time((long) random.nextInt(millisInDay));
         return time;
     }
 
-    public LocalDate generateDay() { //случайная генерация даты
+    public void setTime(Time time) {
+
+        this.time = time;
+    }
+
+    public LocalDate getDay() {
         final Random random = new Random();
         int firstDay = (int) LocalDate.of(2020, 11, 1).toEpochDay();
         int lastDay = (int) LocalDate.of(2020, 11, 30).toEpochDay();
         long randomDay = firstDay + random.nextInt(lastDay - firstDay);
         day = LocalDate.ofEpochDay(randomDay);
-        return day;
+        return day;}
+
+    public void setDay(LocalDate day) {
+
+        this.day = day;
     }
 
-    public typeAndWeight generateType() { //случайная генерация типа
+    public typeAndWeight getType() {
         typeAndWeight[] enumArray = typeAndWeight.values(); //строю массив значении enum-a
         Random rand = new Random();
         type = Arrays.stream(enumArray).
@@ -115,8 +87,12 @@ public class TimeTable {
         return type;
     }
 
-    public double generateWeight() { //случайная генерация веса груза на основе типа
-        weight=generateType();
+    public void setType(typeAndWeight type) {
+        this.type = type;
+    }
+
+    public double getWeight() {
+        weight=getType();
         DecimalFormat df2 = new DecimalFormat("#.##");
 
         if (weight==typeAndWeight.CONTAINER) {
@@ -129,8 +105,14 @@ public class TimeTable {
         }
     }
 
-    public double generateTimeOfUnloading() {
-        unload = generateType();
+    public void setWeight(typeAndWeight weight) {
+
+        this.weight = weight;
+    }
+
+    public double getUnload() {
+
+        unload = getType();
         DecimalFormat df1 = new DecimalFormat("#.#");
         if (unload==typeAndWeight.CONTAINER) {
             return unload.generateContainerTime();
@@ -142,18 +124,10 @@ public class TimeTable {
         }
     }
 
-    public void generateTimeTable(int amountOfShips){
-        for(int i=0; i<amountOfShips; i++){
-            System.out.println(generateName());
-            System.out.println(generateDay());
-            System.out.println(generateTime());
-            System.out.println(generateType());
-            System.out.println(generateWeight());
-            System.out.println(generateTimeOfUnloading());
-            System.out.println("-----------------------");
-        }
-    }
+    public void setUnload(typeAndWeight unload) {
 
+        this.unload = unload;
+    }
 }
 
 
