@@ -23,13 +23,10 @@ public class Main {
 
         //JSON формат рассписания
 
-        for (int i = 0; i < 3; i++) {
             ObjectMapper objectMapper = new ObjectMapper();
             ObjectWriter objectWriter=objectMapper.writer(new DefaultPrettyPrinter());
             String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(List);
             objectWriter.writeValue(Paths.get("timeTable.json").toFile(), List);
-
-        }
     }
 }
 

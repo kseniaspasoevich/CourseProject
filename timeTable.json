@@ -1,46 +1,6 @@
 [ {
-  "name" : "898Vessel",
-  "time" : "13:03:19",
-  "day" : {
-    "year" : 2020,
-    "month" : "NOVEMBER",
-    "monthValue" : 11,
-    "dayOfMonth" : 20,
-    "chronology" : {
-      "id" : "ISO",
-      "calendarType" : "iso8601"
-    },
-    "dayOfWeek" : "FRIDAY",
-    "leapYear" : true,
-    "dayOfYear" : 325,
-    "era" : "CE"
-  },
-  "type" : "LIQUID",
-  "weight" : 285870.7657593882,
-  "unload" : 7.940854604427451
-}, {
-  "name" : "985Vessel",
-  "time" : "16:59:32",
-  "day" : {
-    "year" : 2020,
-    "month" : "NOVEMBER",
-    "monthValue" : 11,
-    "dayOfMonth" : 4,
-    "chronology" : {
-      "id" : "ISO",
-      "calendarType" : "iso8601"
-    },
-    "dayOfWeek" : "WEDNESDAY",
-    "leapYear" : true,
-    "dayOfYear" : 309,
-    "era" : "CE"
-  },
-  "type" : "CONTAINER",
-  "weight" : 4655.186632484029,
-  "unload" : 2.424576371085432
-}, {
-  "name" : "923Ocean",
-  "time" : "09:26:15",
+  "name" : "618Atlantic",
+  "time" : "02:57:07",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
@@ -55,7 +15,47 @@
     "dayOfYear" : 334,
     "era" : "CE"
   },
+  "type" : "BULK",
+  "weight" : 119052.8420525594,
+  "unload" : 1.5263184878533258
+}, {
+  "name" : "37Antartica",
+  "time" : "20:46:52",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 22,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "SUNDAY",
+    "leapYear" : true,
+    "dayOfYear" : 327,
+    "era" : "CE"
+  },
   "type" : "CONTAINER",
-  "weight" : 5573.468706229841,
-  "unload" : 2.9028482844947088
+  "weight" : 7595.972928742966,
+  "unload" : 3.956235900386962
+}, {
+  "name" : "596FinlandBay",
+  "time" : "08:40:10",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 26,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "THURSDAY",
+    "leapYear" : true,
+    "dayOfYear" : 331,
+    "era" : "CE"
+  },
+  "type" : "LIQUID",
+  "weight" : 313107.6568267657,
+  "unload" : 8.697434911854602
 } ]
