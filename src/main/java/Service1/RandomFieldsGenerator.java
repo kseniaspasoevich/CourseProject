@@ -50,32 +50,11 @@ public class RandomFieldsGenerator {
 
 
     public static double getWeight(typeAndWeight type) {
-        typeAndWeight weight = type;
-        DecimalFormat df2 = new DecimalFormat("#.##");
-
-        if (weight==typeAndWeight.CONTAINER) {
-            return weight.generateContainerWeight();
-
-        } else if (weight==typeAndWeight.LIQUID){
-            return weight.generateTankerWeight();
-        } else {
-            return weight.generateBulkerWeight();
-        }
-
+        return type.generateWeight();
     }
 
-    public static double getUnload(typeAndWeight type) {
-
-        typeAndWeight unload = type;
-        DecimalFormat df1 = new DecimalFormat("#.#");
-        if (unload==typeAndWeight.CONTAINER) {
-            return unload.generateContainerTime();
-
-        } else if (unload==typeAndWeight.LIQUID){
-            return unload.generateTankerTime();
-        } else {
-            return unload.generateBulkerWeight();
-        }
+    public static double getUnload(typeAndWeight type, double weight) {
+        return type.generateTime(weight);
     }
 
 }

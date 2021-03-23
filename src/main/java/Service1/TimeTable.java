@@ -22,7 +22,7 @@ public class TimeTable {
         this.day = RandomFieldsGenerator.getDay();
         this.type = RandomFieldsGenerator.getType();
         this.weight = RandomFieldsGenerator.getWeight(type);
-        this.unload = RandomFieldsGenerator.getUnload(type);
+        this.unload = RandomFieldsGenerator.getUnload(type, weight);
     }
 
     @Override
