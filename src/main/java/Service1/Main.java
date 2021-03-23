@@ -10,7 +10,11 @@ public class Main {
         int input=scan.nextInt();
 
         System.out.println("Расписание: ");
-        TimeTable obj = new TimeTable(input);
+
+        for (int i = 0; i < input; i++){
+            TimeTable obj = new TimeTable();
+            System.out.println(obj);
+        }
 
     }
 }

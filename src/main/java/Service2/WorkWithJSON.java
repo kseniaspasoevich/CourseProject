@@ -14,8 +14,9 @@ public class WorkWithJSON {
         int input=scan.nextInt();
 
         System.out.println("JSON файл: ");
-        TimeTable obj=new TimeTable();
+
         for (int i=0; i<input; i++){
+            TimeTable obj=new TimeTable();
             ObjectMapper objectMapper=new ObjectMapper();
             String json=objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
             System.out.println(json);
