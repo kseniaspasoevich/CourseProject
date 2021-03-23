@@ -21,7 +21,7 @@ public class Main {
             System.out.println(obj);
         }
 
-        System.out.println("JSON формат рассписания: ");
+        //JSON формат рассписания
 
         for (int i = 0; i < 3; i++) {
             ObjectMapper objectMapper = new ObjectMapper();
