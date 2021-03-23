@@ -13,7 +13,7 @@ public class WorkWithJSON {
         Scanner scan=new Scanner(System.in);
         int input=scan.nextInt();
 
-        System.out.println("JSON файл: ");
+        System.out.println("JSON формат: ");
 
         for (int i=0; i<input; i++){
             TimeTable obj=new TimeTable();

@@ -2,8 +2,6 @@ package Service1;
 
 import java.sql.Time;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Random;
 import java.text.DecimalFormat;
 
 public class TimeTable {
@@ -27,8 +25,9 @@ public class TimeTable {
 
     @Override
     public String toString() {
-        return name + "\n" + time + "\n" + day + "\n" + type + "\n" + weight + "\n"
-                + unload + "\n" +  "-------------------------\n";
+        DecimalFormat df2 = new DecimalFormat("0.00");
+        return name + "\n" + time + "\n" + day + "\n" + type + "\n" + df2.format(weight) + " тонн\n"
+                + df2.format(unload) + " часов\n" +  "-------------------------\n";
     }
 
     public String getName() {

@@ -1,7 +1,6 @@
 package Service1;
 
 import java.sql.Time;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Random;
@@ -48,13 +47,24 @@ public class RandomFieldsGenerator {
                 findFirst().get(); //использую стрим для нахождения случайного значения в массиве
     }
 
+//примерные верхние границы веса и грузоподъемности различных видов кранов найдены в интернете,
+//ссылки на источники указать в отчёте
 
     public static double getWeight(typeAndWeight type) {
-        return type.generateWeight();
+        double limit = switch (type){
+            case CONTAINER -> 20_000.0;
+            case LIQUID -> 320_000.0;
+            case BULK -> 500_000.0;
+        };
+        return ((double) (Math.random() * limit));
     }
 
     public static double getUnload(typeAndWeight type, double weight) {
-        return type.generateTime(weight);
+        double carryingCapacity = switch (type){
+            case CONTAINER -> 32.0;
+            case LIQUID -> 600.0;
+            case BULK -> 1300.0;
+        };
+        return (weight/carryingCapacity)/60.0; //конвертируем в час
     }
-
 }
