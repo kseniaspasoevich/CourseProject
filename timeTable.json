@@ -1,0 +1,61 @@
+[ {
+  "name" : "898Vessel",
+  "time" : "13:03:19",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 20,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "FRIDAY",
+    "leapYear" : true,
+    "dayOfYear" : 325,
+    "era" : "CE"
+  },
+  "type" : "LIQUID",
+  "weight" : 285870.7657593882,
+  "unload" : 7.940854604427451
+}, {
+  "name" : "985Vessel",
+  "time" : "16:59:32",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 4,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "WEDNESDAY",
+    "leapYear" : true,
+    "dayOfYear" : 309,
+    "era" : "CE"
+  },
+  "type" : "CONTAINER",
+  "weight" : 4655.186632484029,
+  "unload" : 2.424576371085432
+}, {
+  "name" : "923Ocean",
+  "time" : "09:26:15",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 29,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "SUNDAY",
+    "leapYear" : true,
+    "dayOfYear" : 334,
+    "era" : "CE"
+  },
+  "type" : "CONTAINER",
+  "weight" : 5573.468706229841,
+  "unload" : 2.9028482844947088
+} ]

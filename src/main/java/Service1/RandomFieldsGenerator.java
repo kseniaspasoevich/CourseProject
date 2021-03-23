@@ -4,6 +4,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class RandomFieldsGenerator {
 
