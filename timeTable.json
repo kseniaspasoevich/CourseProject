@@ -1,61 +1,61 @@
 [ {
-  "name" : "618Atlantic",
-  "time" : "02:57:07",
+  "name" : "592Ocean",
+  "time" : "20:50:41",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
     "monthValue" : 11,
-    "dayOfMonth" : 29,
+    "dayOfMonth" : 14,
     "chronology" : {
       "id" : "ISO",
       "calendarType" : "iso8601"
     },
-    "dayOfWeek" : "SUNDAY",
+    "dayOfWeek" : "SATURDAY",
     "leapYear" : true,
-    "dayOfYear" : 334,
+    "dayOfYear" : 319,
     "era" : "CE"
   },
   "type" : "BULK",
-  "weight" : 119052.8420525594,
-  "unload" : 1.5263184878533258
+  "weight" : 270293.5048965676,
+  "unload" : 3.46530134482779
 }, {
-  "name" : "37Antartica",
-  "time" : "20:46:52",
+  "name" : "681Danube",
+  "time" : "04:40:01",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
     "monthValue" : 11,
-    "dayOfMonth" : 22,
+    "dayOfMonth" : 6,
     "chronology" : {
       "id" : "ISO",
       "calendarType" : "iso8601"
     },
-    "dayOfWeek" : "SUNDAY",
+    "dayOfWeek" : "FRIDAY",
     "leapYear" : true,
-    "dayOfYear" : 327,
+    "dayOfYear" : 311,
     "era" : "CE"
   },
   "type" : "CONTAINER",
-  "weight" : 7595.972928742966,
-  "unload" : 3.956235900386962
+  "weight" : 10644.04685619855,
+  "unload" : 5.543774404270079
 }, {
-  "name" : "596FinlandBay",
-  "time" : "08:40:10",
+  "name" : "618Titan",
+  "time" : "22:51:19",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
     "monthValue" : 11,
-    "dayOfMonth" : 26,
+    "dayOfMonth" : 19,
     "chronology" : {
       "id" : "ISO",
       "calendarType" : "iso8601"
     },
     "dayOfWeek" : "THURSDAY",
     "leapYear" : true,
-    "dayOfYear" : 331,
+    "dayOfYear" : 324,
     "era" : "CE"
   },
-  "type" : "LIQUID",
-  "weight" : 313107.6568267657,
-  "unload" : 8.697434911854602
+  "type" : "CONTAINER",
+  "weight" : 15217.131115482045,
+  "unload" : 7.925589122646898
 } ]

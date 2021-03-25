@@ -10,7 +10,7 @@ public class TimeTable {
     private String name; //название судна
     private Time time; //время прибытия
     private LocalDate day; //день прибытия
-    private typeAndWeight type; //тип груза
+    private Service1.type type; //тип груза
     private double weight; //вес груза
     private double unload; //Время разгрузки
 
@@ -54,11 +54,11 @@ public class TimeTable {
         this.day = day;
     }
 
-    public typeAndWeight getType() {
+    public Service1.type getType() {
         return type;
     }
 
-    public void setType(typeAndWeight type) {
+    public void setType(Service1.type type) {
         this.type = type;
     }
 

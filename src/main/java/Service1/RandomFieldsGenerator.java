@@ -4,7 +4,6 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
 public class RandomFieldsGenerator {
 
@@ -40,18 +39,18 @@ public class RandomFieldsGenerator {
     }
 
 
-    public static typeAndWeight getType() {
-        typeAndWeight[] enumArray = typeAndWeight.values(); //строю массив значении enum-a
+    public static type getType() {
+        type[] enumArray = type.values(); //строю массив значении enum-a
         Random rand = new Random();
         return Arrays.stream(enumArray).
                 skip(rand.nextInt(enumArray.length)).
                 findFirst().get(); //использую стрим для нахождения случайного значения в массиве
     }
 
-//примерные верхние границы веса и грузоподъемности различных видов кранов найдены в интернете,
+//примерные верхние границы веса груза и грузоподъемности различных видов кранов найдены в интернете,
 //ссылки на источники указать в отчёте
 
-    public static double getWeight(typeAndWeight type) {
+    public static double getWeight(type type) {
         double limit = switch (type){
             case CONTAINER -> 20_000.0;
             case LIQUID -> 320_000.0;
@@ -60,12 +59,12 @@ public class RandomFieldsGenerator {
         return ((double) (Math.random() * limit));
     }
 
-    public static double getUnload(typeAndWeight type, double weight) {
-        double carryingCapacity = switch (type){
+    public static double getUnload(type type, double weight) {
+        double carryingCapacityCrane = switch (type){
             case CONTAINER -> 32.0;
             case LIQUID -> 600.0;
             case BULK -> 1300.0;
         };
-        return (weight/carryingCapacity)/60.0; //конвертируем в час
+        return (weight/carryingCapacityCrane)/60.0; //конвертируем в час
     }
 }
