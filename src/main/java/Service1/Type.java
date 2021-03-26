@@ -1,7 +1,7 @@
 package Service1;
 
-public enum type {
+public enum Type {
     CONTAINER, LIQUID, BULK;
 
-    type() {}
+    Type() {}
 }

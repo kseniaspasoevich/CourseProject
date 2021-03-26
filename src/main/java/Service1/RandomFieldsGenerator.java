@@ -39,8 +39,8 @@ public class RandomFieldsGenerator {
     }
 
 
-    public static type getType() {
-        type[] enumArray = type.values(); //строю массив значении enum-a
+    public static Type getType() {
+        Type[] enumArray = Type.values(); //строю массив значении enum-a
         Random rand = new Random();
         return Arrays.stream(enumArray).
                 skip(rand.nextInt(enumArray.length)).
@@ -50,7 +50,7 @@ public class RandomFieldsGenerator {
 //примерные верхние границы веса груза и грузоподъемности различных видов кранов найдены в интернете,
 //ссылки на источники указать в отчёте
 
-    public static double getWeight(type type) {
+    public static double getWeight(Type type) {
         double limit = switch (type){
             case CONTAINER -> 20_000.0;
             case LIQUID -> 320_000.0;
@@ -59,7 +59,7 @@ public class RandomFieldsGenerator {
         return ((double) (Math.random() * limit));
     }
 
-    public static double getUnload(type type, double weight) {
+    public static double getUnload(Type type, double weight) {
         double carryingCapacityCrane = switch (type){
             case CONTAINER -> 32.0;
             case LIQUID -> 600.0;
