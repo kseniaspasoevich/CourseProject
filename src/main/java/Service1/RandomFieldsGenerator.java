@@ -44,11 +44,10 @@ public class RandomFieldsGenerator {
         Random rand = new Random();
         return Arrays.stream(enumArray).
                 skip(rand.nextInt(enumArray.length)).
-                findFirst().get(); //использую стрим для нахождения случайного значения в массиве
+                findFirst().get(); //нахождение случайного значения в массиве
     }
 
-//примерные верхние границы веса груза и грузоподъемности различных видов кранов найдены в интернете,
-//ссылки на источники указать в отчёте
+//примерные верхние границы веса груза и грузоподъемности различных видов кранов найдены в интернете
 
     public static double getWeight(Type type) {
         double limit = switch (type){

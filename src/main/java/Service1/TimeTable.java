@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 
 public class TimeTable {
 
-    //содержимое расписания, входит json файл
+    //содержимое расписания, входит в json файл
     private String name; //название судна
     private Time time; //время прибытия
     private LocalDate day; //день прибытия

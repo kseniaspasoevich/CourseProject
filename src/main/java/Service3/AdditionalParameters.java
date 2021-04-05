@@ -1,6 +1,8 @@
 package Service3;
 
 
+import java.text.DecimalFormat;
+
 public class AdditionalParameters {
 
     private double delayUnload; //задержка разгрузки
@@ -35,5 +37,12 @@ public class AdditionalParameters {
 
     public void setArrivalDeviation(double arrivalDeviation) {
         this.arrivalDeviation = arrivalDeviation;
+    }
+
+    @Override
+    public String toString() {
+        //DecimalFormat df2 = new DecimalFormat("0.00");
+        String s ="Отклонение в прибытии: " + arrivalDeviation + "\n";
+        return s;
     }
 }

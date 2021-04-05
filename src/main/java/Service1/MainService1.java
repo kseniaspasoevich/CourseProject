@@ -7,9 +7,9 @@ public class MainService1 {
         System.out.println("Расписание: ");
 
         for (int i = 1; i <= 10; i++) {
-            System.out.println(i+ ":");
+            System.out.println(i + ":");
             TimeTable obj = new TimeTable();
             System.out.println(obj);
+        }
     }
-}
 }
