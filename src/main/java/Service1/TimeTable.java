@@ -26,8 +26,8 @@ public class TimeTable {
     @Override
     public String toString() {
         DecimalFormat df2 = new DecimalFormat("0.00");
-        return name + "\n" + time + "\n" + day + "\n" + type + "\n" + df2.format(weight) + " тонн\n"
-                + df2.format(unload) + " часов\n" +  "-------------------------\n";
+        return name + "\n" + time + "\n" + day + "\n" + type + "\n" + df2.format(weight) + " tones\n"
+                + df2.format(unload) + " hours\n" +  "-------------------------\n";
     }
 
     public String getName() {

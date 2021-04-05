@@ -1,66 +1,26 @@
 [ {
-  "name" : "82Aurora",
-  "time" : "00:18:38",
+  "name" : "717Maurithania",
+  "time" : "17:34:48",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
     "monthValue" : 11,
-    "dayOfMonth" : 3,
+    "dayOfMonth" : 20,
     "chronology" : {
       "id" : "ISO",
       "calendarType" : "iso8601"
     },
-    "dayOfWeek" : "TUESDAY",
+    "dayOfWeek" : "FRIDAY",
     "leapYear" : true,
-    "dayOfYear" : 308,
+    "dayOfYear" : 325,
     "era" : "CE"
   },
   "type" : "CONTAINER",
-  "weight" : 6040.621402001471,
-  "unload" : 3.1461569802090996
+  "weight" : 14272.075386953407,
+  "unload" : 7.433372597371567
 }, {
-  "name" : "272Sava",
-  "time" : "02:48:21",
-  "day" : {
-    "year" : 2020,
-    "month" : "NOVEMBER",
-    "monthValue" : 11,
-    "dayOfMonth" : 2,
-    "chronology" : {
-      "id" : "ISO",
-      "calendarType" : "iso8601"
-    },
-    "dayOfWeek" : "MONDAY",
-    "leapYear" : true,
-    "dayOfYear" : 307,
-    "era" : "CE"
-  },
-  "type" : "CONTAINER",
-  "weight" : 10973.847805991069,
-  "unload" : 5.715545732287015
-}, {
-  "name" : "318Sava",
-  "time" : "01:38:23",
-  "day" : {
-    "year" : 2020,
-    "month" : "NOVEMBER",
-    "monthValue" : 11,
-    "dayOfMonth" : 23,
-    "chronology" : {
-      "id" : "ISO",
-      "calendarType" : "iso8601"
-    },
-    "dayOfWeek" : "MONDAY",
-    "leapYear" : true,
-    "dayOfYear" : 328,
-    "era" : "CE"
-  },
-  "type" : "BULK",
-  "weight" : 396237.5932869634,
-  "unload" : 5.079969144704659
-}, {
-  "name" : "357Indiana",
-  "time" : "15:24:52",
+  "name" : "459Spb",
+  "time" : "13:20:47",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
@@ -75,27 +35,87 @@
     "dayOfYear" : 326,
     "era" : "CE"
   },
-  "type" : "LIQUID",
-  "weight" : 57199.112492811146,
-  "unload" : 1.5888642359114207
+  "type" : "CONTAINER",
+  "weight" : 8495.569859349405,
+  "unload" : 4.424775968411149
 }, {
-  "name" : "Ksenia",
-  "time" : "22:45:11",
+  "name" : "203Pacific",
+  "time" : "01:42:33",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
     "monthValue" : 11,
-    "dayOfMonth" : 4,
+    "dayOfMonth" : 9,
     "chronology" : {
       "id" : "ISO",
       "calendarType" : "iso8601"
     },
-    "dayOfWeek" : "WEDNESDAY",
+    "dayOfWeek" : "MONDAY",
     "leapYear" : true,
-    "dayOfYear" : 309,
+    "dayOfYear" : 314,
+    "era" : "CE"
+  },
+  "type" : "CONTAINER",
+  "weight" : 11737.865206361987,
+  "unload" : 6.113471461646868
+}, {
+  "name" : "808Artica",
+  "time" : "14:28:13",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 12,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "THURSDAY",
+    "leapYear" : true,
+    "dayOfYear" : 317,
+    "era" : "CE"
+  },
+  "type" : "LIQUID",
+  "weight" : 11453.674404115724,
+  "unload" : 0.3181576223365479
+}, {
+  "name" : "277FinlandBay",
+  "time" : "11:33:42",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 10,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "TUESDAY",
+    "leapYear" : true,
+    "dayOfYear" : 315,
+    "era" : "CE"
+  },
+  "type" : "CONTAINER",
+  "weight" : 6950.513425612286,
+  "unload" : 3.620059075839732
+}, {
+  "name" : "Alina",
+  "time" : "19:35:33",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 26,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "THURSDAY",
+    "leapYear" : true,
+    "dayOfYear" : 331,
     "era" : "CE"
   },
   "type" : "BULK",
-  "weight" : 43000.0,
-  "unload" : 0.5512820512820513
+  "weight" : 12000.0,
+  "unload" : 0.15384615384615383
 } ]
