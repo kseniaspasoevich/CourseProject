@@ -1,9 +1,11 @@
 package Service3;
 
 
+import Service1.*;
+
 import java.text.DecimalFormat;
 
-public class AdditionalParameters {
+public class AdditionalParameters extends TimeTable {
 
     private double delayUnload; //задержка разгрузки
     private double penalty;    //штраф
@@ -39,10 +41,4 @@ public class AdditionalParameters {
         this.arrivalDeviation = arrivalDeviation;
     }
 
-    @Override
-    public String toString() {
-        //DecimalFormat df2 = new DecimalFormat("0.00");
-        String s ="Отклонение в прибытии: " + arrivalDeviation + "\n";
-        return s;
-    }
 }

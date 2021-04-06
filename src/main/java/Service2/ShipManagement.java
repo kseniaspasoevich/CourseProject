@@ -3,6 +3,8 @@ package Service2;
 import Service1.RandomFieldsGenerator;
 import Service1.TimeTable;
 import Service1.Type;
+import Service3.AdditionalParameters;
+import Service3.ExecutionOfService3;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,11 +20,12 @@ public class ShipManagement {
 
     public static void createShip(int initialAmountOfShips) throws IOException {
         System.out.println("Time table: ");
-        ArrayList<TimeTable> List = new ArrayList<TimeTable>();
+        ArrayList<AdditionalParameters> List1 = new ArrayList<AdditionalParameters>();
+        ArrayList<AdditionalParameters> List2 = new ArrayList<AdditionalParameters>();
 
         for (int i = 1; i <= initialAmountOfShips; i++) {
-            TimeTable obj = new TimeTable();
-            List.add(obj);
+            AdditionalParameters obj = new AdditionalParameters();
+            List1.add(obj);
             System.out.println(i + ":");
             System.out.println(obj);
         }
@@ -30,20 +33,21 @@ public class ShipManagement {
         while (true) {
             System.out.println("Enter new ship? y/n");
             Scanner input = new Scanner(System.in);
-            String answer = input.next();
+            String answer1 = input.next();
 
-            if (answer.equals("n")) {
+            if (answer1.equals("n")) {
                 System.out.println("Time table completed!");
                 System.exit(0);}
 
-            else if (answer.equals("y")){
-                TimeTable newShip = new TimeTable();
+            else if (answer1.equals("y")){
+                AdditionalParameters newShip = new AdditionalParameters();
+                AdditionalParameters newShipParameters=new AdditionalParameters();
 
                 System.out.println("Enter the name of the ship:  ");
                 String name = input.next();
                 newShip.setName(name);
 
-                System.out.println("Enter the time of arrival in MILLISECONDS: ");
+                System.out.println("Enter the time of arrival according to schedule in MILLISECONDS: ");
                 long timeInMilliseconds = input.nextLong();
                 java.sql.Time time = new java.sql.Time(timeInMilliseconds);
                 newShip.setTime(time);
@@ -62,9 +66,27 @@ public class ShipManagement {
                 double unload1 = RandomFieldsGenerator.getUnload(type1, weight1);
                 newShip.setUnload(unload1);
 
+                System.out.println("Arrival deviation expected? y/n");
+                String answer2 = input.next();
+                if (answer2.equals("n"))
+                    continue;
+
+                else if (answer2.equals("y")) {
+                    double deviation=ExecutionOfService3.getArrivalDeviation();
+
+                    if ((deviation < 0)) {
+                        System.out.println("Arrival on time!");
+                    } else {
+                        System.out.println("Arrival delayed! ");
+                    }
+                    System.out.println("Arrival deviation: "+deviation+" hours");
+                    newShipParameters.setArrivalDeviation(deviation);
+                }
+
                 System.out.println("-------------------");
                 System.out.println(newShip);
-                List.add(newShip);
+                List1.add(newShip);
+                List2.add(newShipParameters);
             }
 
             else {
@@ -77,8 +99,11 @@ public class ShipManagement {
 
             ObjectMapper objectMapper = new ObjectMapper();
             ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
-            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(List);
-            objectWriter.writeValue(Paths.get("timeTable.json").toFile(), List);
+            String json1 = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(List1);
+            String json2 = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(List2);
+            objectWriter.writeValue(Paths.get("timeTable.json").toFile(), List1);
         }
     }
-}
+
+
+    }

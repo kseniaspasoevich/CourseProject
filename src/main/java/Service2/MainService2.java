@@ -1,5 +1,7 @@
 package Service2;
 
+import Service3.AdditionalParameters;
+
 import java.io.IOException;
 
 

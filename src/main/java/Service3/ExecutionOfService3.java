@@ -14,7 +14,7 @@ public class ExecutionOfService3 {
 
         double minimalArrivalEarlier = -168.0; //7 дней (7*24 часов)
         double maximumArrivalLater = 168.0;
-        return minimalArrivalEarlier + ((double) 2*(Math.random() * maximumArrivalLater));
+        return (minimalArrivalEarlier + ((double) 2*(Math.random() * maximumArrivalLater)));
     }
 
     /*public static boolean isThereArrivalDeviation() { //есть отклонение в прибытии
