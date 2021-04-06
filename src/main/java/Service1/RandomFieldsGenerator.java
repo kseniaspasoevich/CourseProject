@@ -60,9 +60,9 @@ public class RandomFieldsGenerator {
 
     public static double getUnload(Type type, double weight) {
         double carryingCapacityCrane = switch (type){
-            case CONTAINER -> 3200.0;
-            case LIQUID -> 6000.0;
-            case BULK -> 13000.0;
+            case CONTAINER -> 32000.0;
+            case LIQUID -> 60000.0;
+            case BULK -> 130000.0;
         };
         return (weight/carryingCapacityCrane)/60.0; //конвертируем в час
     }

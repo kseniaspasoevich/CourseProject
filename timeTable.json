@@ -1,52 +1,6 @@
 [ {
-  "name" : "809Lusitania2",
-  "time" : "01:18:47",
-  "day" : {
-    "year" : 2020,
-    "month" : "NOVEMBER",
-    "monthValue" : 11,
-    "dayOfMonth" : 14,
-    "chronology" : {
-      "id" : "ISO",
-      "calendarType" : "iso8601"
-    },
-    "dayOfWeek" : "SATURDAY",
-    "leapYear" : true,
-    "dayOfYear" : 319,
-    "era" : "CE"
-  },
-  "type" : "BULK",
-  "weight" : 66789.57676273034,
-  "unload" : 0.08562766251632095,
-  "delayUnload" : 21.727919380281996,
-  "penalty" : 2172.7919380281996,
-  "arrivalDeviation" : 33.36552801402112
-}, {
-  "name" : "346Anchor",
-  "time" : "17:00:37",
-  "day" : {
-    "year" : 2020,
-    "month" : "NOVEMBER",
-    "monthValue" : 11,
-    "dayOfMonth" : 9,
-    "chronology" : {
-      "id" : "ISO",
-      "calendarType" : "iso8601"
-    },
-    "dayOfWeek" : "MONDAY",
-    "leapYear" : true,
-    "dayOfYear" : 314,
-    "era" : "CE"
-  },
-  "type" : "BULK",
-  "weight" : 231595.42753668598,
-  "unload" : 0.29691721479062305,
-  "delayUnload" : 17.970152502695814,
-  "penalty" : 1797.0152502695814,
-  "arrivalDeviation" : 41.56512044647556
-}, {
-  "name" : "638Moscow",
-  "time" : "01:36:27",
+  "name" : "296Vltava",
+  "time" : "14:01:55",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
@@ -62,78 +16,147 @@
     "era" : "CE"
   },
   "type" : "LIQUID",
-  "weight" : 312707.92975657183,
-  "unload" : 0.8686331382126995,
-  "delayUnload" : 5.730005992470773,
-  "penalty" : 573.0005992470774,
-  "arrivalDeviation" : 63.065545174128374
+  "weight" : 244510.2079398784,
+  "unload" : 0.6791950220552178,
+  "delayUnload" : 8.770558033381148,
+  "penalty" : 877.0558033381147,
+  "arrivalDeviation" : -136.91409422780316
 }, {
-  "name" : "904Indiana",
-  "time" : "04:41:32",
+  "name" : "215Titan",
+  "time" : "20:12:07",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
     "monthValue" : 11,
-    "dayOfMonth" : 10,
+    "dayOfMonth" : 4,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "WEDNESDAY",
+    "leapYear" : true,
+    "dayOfYear" : 309,
+    "era" : "CE"
+  },
+  "type" : "CONTAINER",
+  "weight" : 2967.5166502513116,
+  "unload" : 0.015455815886725581,
+  "delayUnload" : 1.8879283635045176,
+  "penalty" : 188.79283635045175,
+  "arrivalDeviation" : -0.02150455540237317
+}, {
+  "name" : "199BelgradeRiver",
+  "time" : "19:15:30",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 4,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "WEDNESDAY",
+    "leapYear" : true,
+    "dayOfYear" : 309,
+    "era" : "CE"
+  },
+  "type" : "BULK",
+  "weight" : 5122.344531335532,
+  "unload" : 0.006567108373507093,
+  "delayUnload" : 6.624869600253116,
+  "penalty" : 662.4869600253116,
+  "arrivalDeviation" : -159.52934629714917
+}, {
+  "name" : "723Vessel",
+  "time" : "07:48:58",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 17,
     "chronology" : {
       "id" : "ISO",
       "calendarType" : "iso8601"
     },
     "dayOfWeek" : "TUESDAY",
     "leapYear" : true,
-    "dayOfYear" : 315,
+    "dayOfYear" : 322,
     "era" : "CE"
   },
   "type" : "LIQUID",
-  "weight" : 312692.8257392477,
-  "unload" : 0.8685911826090215,
-  "delayUnload" : 1.128118612438091,
-  "penalty" : 112.8118612438091,
-  "arrivalDeviation" : -153.23478059674645
+  "weight" : 169923.29965514818,
+  "unload" : 0.47200916570874496,
+  "delayUnload" : 0.5998127468851173,
+  "penalty" : 59.98127468851173,
+  "arrivalDeviation" : 17.54196301869308
 }, {
-  "name" : "200FinlandBay",
-  "time" : "07:30:06",
+  "name" : "926Maurithania",
+  "time" : "20:20:13",
   "day" : {
     "year" : 2020,
     "month" : "NOVEMBER",
     "monthValue" : 11,
-    "dayOfMonth" : 26,
+    "dayOfMonth" : 25,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "WEDNESDAY",
+    "leapYear" : true,
+    "dayOfYear" : 330,
+    "era" : "CE"
+  },
+  "type" : "CONTAINER",
+  "weight" : 12778.030341829655,
+  "unload" : 0.06655224136369613,
+  "delayUnload" : 17.671291778278327,
+  "penalty" : 1767.1291778278328,
+  "arrivalDeviation" : -85.12863180206273
+}, {
+  "name" : "Ellenot",
+  "time" : "17:25:11",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 12,
     "chronology" : {
       "id" : "ISO",
       "calendarType" : "iso8601"
     },
     "dayOfWeek" : "THURSDAY",
     "leapYear" : true,
-    "dayOfYear" : 331,
-    "era" : "CE"
-  },
-  "type" : "LIQUID",
-  "weight" : 104290.49510385252,
-  "unload" : 0.28969581973292363,
-  "delayUnload" : 5.655905911659437,
-  "penalty" : 565.5905911659437,
-  "arrivalDeviation" : -32.25978667294015
-}, {
-  "name" : "Ksenia",
-  "time" : "22:45:11",
-  "day" : {
-    "year" : 2020,
-    "month" : "NOVEMBER",
-    "monthValue" : 11,
-    "dayOfMonth" : 23,
-    "chronology" : {
-      "id" : "ISO",
-      "calendarType" : "iso8601"
-    },
-    "dayOfWeek" : "MONDAY",
-    "leapYear" : true,
-    "dayOfYear" : 328,
+    "dayOfYear" : 317,
     "era" : "CE"
   },
   "type" : "BULK",
   "weight" : 12000.0,
   "unload" : 0.015384615384615385,
-  "delayUnload" : 4.96459963085989,
-  "penalty" : 496.45996308598905,
-  "arrivalDeviation" : -114.73230835739815
+  "delayUnload" : 15.025488839430228,
+  "penalty" : 1502.5488839430227,
+  "arrivalDeviation" : -25.81738166874362
+}, {
+  "name" : "Qwq",
+  "time" : "14:03:42",
+  "day" : {
+    "year" : 2020,
+    "month" : "NOVEMBER",
+    "monthValue" : 11,
+    "dayOfMonth" : 14,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "dayOfWeek" : "SATURDAY",
+    "leapYear" : true,
+    "dayOfYear" : 319,
+    "era" : "CE"
+  },
+  "type" : "CONTAINER",
+  "weight" : 12000.0,
+  "unload" : 0.0625,
+  "delayUnload" : 11.151499039523488,
+  "penalty" : 1115.1499039523487,
+  "arrivalDeviation" : -88.64432642576537
 } ]

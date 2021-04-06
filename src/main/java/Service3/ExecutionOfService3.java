@@ -17,10 +17,6 @@ public class ExecutionOfService3 {
         return (minimalArrivalEarlier + ((double) 2*(Math.random() * maximumArrivalLater)));
     }
 
-    /*public static boolean isThereArrivalDeviation() { //есть отклонение в прибытии
-        return true;
-    }*/
-
     public static double getPenalty(double delay) { //с каждым часом задержки, штраф увеличывается за 100
         return delay * 100;
     }

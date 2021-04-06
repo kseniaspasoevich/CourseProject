@@ -19,9 +19,8 @@ import java.util.Scanner;
 public class ShipManagement {
 
     public static void createShip(int initialAmountOfShips) throws IOException {
-        System.out.println("Time table: ");
+        System.out.println("Time table: \n");
         ArrayList<AdditionalParameters> List1 = new ArrayList<AdditionalParameters>();
-        ArrayList<AdditionalParameters> List2 = new ArrayList<AdditionalParameters>();
 
         for (int i = 1; i <= initialAmountOfShips; i++) {
             AdditionalParameters obj = new AdditionalParameters();
@@ -29,6 +28,7 @@ public class ShipManagement {
             System.out.println(i + ":");
             System.out.println(obj);
         }
+
 
         while (true) {
             System.out.println("Enter new ship? y/n");
@@ -41,7 +41,6 @@ public class ShipManagement {
 
             else if (answer1.equals("y")){
                 AdditionalParameters newShip = new AdditionalParameters();
-                AdditionalParameters newShipParameters=new AdditionalParameters();
 
                 System.out.println("Enter the name of the ship:  ");
                 String name = input.next();
@@ -62,31 +61,16 @@ public class ShipManagement {
                 newShip.setType(type1);
                 System.out.println("Enter the weight");
                 int weight1 = input.nextInt();
+
+                ShipManagement.checkType(type1, weight1);
+
                 newShip.setWeight(weight1);
                 double unload1 = RandomFieldsGenerator.getUnload(type1, weight1);
                 newShip.setUnload(unload1);
 
-                System.out.println("Arrival deviation expected? y/n");
-                String answer2 = input.next();
-                if (answer2.equals("n"))
-                    continue;
-
-                else if (answer2.equals("y")) {
-                    double deviation=ExecutionOfService3.getArrivalDeviation();
-
-                    if ((deviation < 0)) {
-                        System.out.println("Arrival on time!");
-                    } else {
-                        System.out.println("Arrival delayed! ");
-                    }
-                    System.out.println("Arrival deviation: "+deviation+" hours");
-                    newShipParameters.setArrivalDeviation(deviation);
-                }
-
                 System.out.println("-------------------");
                 System.out.println(newShip);
                 List1.add(newShip);
-                List2.add(newShipParameters);
             }
 
             else {
@@ -96,14 +80,25 @@ public class ShipManagement {
 
 
             //JSON формат рассписания
-
             ObjectMapper objectMapper = new ObjectMapper();
             ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
-            String json1 = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(List1);
-            String json2 = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(List2);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(List1);
             objectWriter.writeValue(Paths.get("timeTable.json").toFile(), List1);
         }
     }
 
-
+    public static void checkType(Type typeCheck, double weightCheck){
+        if (typeCheck.toString().equals("BULK") && weightCheck>500000) {
+            System.out.println("This type doesn't support more than 500 000 tones!");
+            System.exit(2);
+        }
+        else if (typeCheck.toString().equals("CONTAINER") && weightCheck>20000) {
+            System.out.println("This type doesn't support more than 20 000 tones!");
+            System.exit(2);
+        }
+        else if (typeCheck.toString().equals("LIQUID") && weightCheck>320000) {
+            System.out.println("This type doesn't support more than 320 000 tones!");
+            System.exit(2);
+        }
     }
+}
