@@ -12,6 +12,7 @@ public class AdditionalParameters extends TimeTable {
     private double arrivalDeviation; //отклонение в прибытии
 
     public AdditionalParameters() {
+        super();
         this.delayUnload = ExecutionOfService3.getUnloadDelay();
         this.penalty = ExecutionOfService3.getPenalty(delayUnload);
         this.arrivalDeviation = ExecutionOfService3.getArrivalDeviation();

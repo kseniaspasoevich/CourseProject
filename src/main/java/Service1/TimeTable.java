@@ -1,18 +1,28 @@
 package Service1;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.sql.Time;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.text.DecimalFormat;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class TimeTable {
 
     //содержимое расписания, входит в json файл
-    private String name; //название судна
-    private Time time; //время прибытия
-    private LocalDate day; //день прибытия
-    private Type type; //тип груза
-    private double weight; //вес груза
-    private double unload; //Время разгрузки
+    protected String name; //название судна
+    protected Time time; //время прибытия
+    protected LocalDate day; //день прибытия
+    protected Type type; //тип груза
+    protected double weight; //вес груза
+    protected double unload; //Время разгрузки
 
     public TimeTable() {
         this.name = RandomFieldsGenerator.getName();
@@ -46,12 +56,18 @@ public class TimeTable {
         this.time = time;
     }
 
-    public LocalDate getDay() {
-        return day;
+    public String getDay() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return this.day.format(formatter);
     }
 
-    public void setDay(LocalDate day) {
-        this.day = day;
+    public void setDay(Object day) {
+        if (day instanceof String) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            this.day = LocalDate.parse((String) day, formatter);
+        } else if (day instanceof LocalDate) {
+            this.day = (LocalDate) day;
+        }
     }
 
     public Type getType() {

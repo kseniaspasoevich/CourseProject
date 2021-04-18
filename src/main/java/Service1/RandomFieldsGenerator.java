@@ -1,5 +1,10 @@
 package Service1;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -21,7 +26,6 @@ public class RandomFieldsGenerator {
         return randomName2 + randomName1;
     }
 
-
     public static Time getTime() {
 
         final Random random = new Random();
@@ -29,7 +33,8 @@ public class RandomFieldsGenerator {
         return new Time((long) random.nextInt(millisInDay));
     }
 
-
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     public static LocalDate getDay() {
         final Random random = new Random();
         int firstDay = (int) LocalDate.of(2020, 11, 1).toEpochDay();
