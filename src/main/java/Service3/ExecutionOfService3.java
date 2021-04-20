@@ -1,8 +1,5 @@
 package Service3;
 
-import Service1.*;
-import Service2.*;
-
 public class ExecutionOfService3 {
 
     public static double getUnloadDelay() { //задержка разгрузки в часах (случайная величина от 0 до 1440 минутах (24 часа))

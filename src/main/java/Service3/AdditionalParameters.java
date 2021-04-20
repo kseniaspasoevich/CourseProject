@@ -3,8 +3,6 @@ package Service3;
 
 import Service1.*;
 
-import java.text.DecimalFormat;
-
 public class AdditionalParameters extends TimeTable {
 
     private double delayUnload; //задержка разгрузки
