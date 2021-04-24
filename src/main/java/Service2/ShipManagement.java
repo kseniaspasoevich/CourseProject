@@ -1,8 +1,8 @@
 package Service2;
 
 import Service1.RandomFieldsGenerator;
+import Service1.TimeTable;
 import Service1.Type;
-import Service3.AdditionalParameters;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -26,7 +26,7 @@ public class ShipManagement {
                 break;
             }
             else if (answer1.equals("y")) {
-                AdditionalParameters newShip = new AdditionalParameters();
+                TimeTable newShip = new TimeTable();
 
                 System.out.println("Enter the name of the ship:  ");
                 String name = input.next();
@@ -45,8 +45,9 @@ public class ShipManagement {
                 System.out.println("Enter the type (BULK, LIQUID or CONTAINER !!!): ");
                 Type type1 = Type.valueOf(input.next());
                 newShip.setType(type1);
+
                 System.out.println("Enter the weight");
-                int weight1 = input.nextInt();
+                double weight1 = input.nextDouble();
 
                 ShipManagement.checkType(type1, weight1);
 
@@ -68,21 +69,25 @@ public class ShipManagement {
 
     public static void generateShips(int initialAmountOfShips){
         for (int i = 1; i <= initialAmountOfShips; i++) {
-            AdditionalParameters obj = new AdditionalParameters();
+            TimeTable obj = new TimeTable();
             List1.add(obj);
         }
     }
     public static void checkType(Type typeCheck, double weightCheck){
-        if (typeCheck.toString().equals("BULK") && weightCheck>500000) {
+        if (weightCheck < 25_000) {
+            System.out.println("Error! Cargo weight is never less than 25 000 tones!");
+            System.exit(2);
+        }
+        if (typeCheck.toString().equals("BULK") && weightCheck>990_000) {
+            System.out.println("This type doesn't support more than 990 000 tones!");
+            System.exit(2);
+        }
+        else if (typeCheck.toString().equals("CONTAINER") && weightCheck>50_000) {
+            System.out.println("This type doesn't support more than 50 000 tones!");
+            System.exit(2);
+        }
+        else if (typeCheck.toString().equals("LIQUID") && weightCheck>500_000) {
             System.out.println("This type doesn't support more than 500 000 tones!");
-            System.exit(2);
-        }
-        else if (typeCheck.toString().equals("CONTAINER") && weightCheck>20000) {
-            System.out.println("This type doesn't support more than 20 000 tones!");
-            System.exit(2);
-        }
-        else if (typeCheck.toString().equals("LIQUID") && weightCheck>320000) {
-            System.out.println("This type doesn't support more than 320 000 tones!");
             System.exit(2);
         }
     }

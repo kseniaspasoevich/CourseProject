@@ -51,22 +51,20 @@ public class RandomFieldsGenerator {
                 findFirst().get(); //нахождение случайного значения в массиве
     }
 
-//примерные верхние границы веса груза и грузоподъемности различных видов кранов найдены в интернете
-
     public static double getWeight(Type type) {
         double limit = switch (type){
-            case CONTAINER -> 20_000.0;
-            case LIQUID -> 320_000.0;
-            case BULK -> 500_000.0;
+            case CONTAINER -> 50_000.0;
+            case LIQUID -> 500_000.0;
+            case BULK -> 990_000.0;
         };
-        return ((double) (Math.random() * limit));
+        return (25_000 + (double) (Math.random() * limit)); //если вез груза меньше 25 000 тон, то тогда нет смысла его перевозить
     }
 
     public static double getUnload(Type type, double weight) {
         double carryingCapacityCrane = switch (type){
-            case CONTAINER -> 32000.0;
-            case LIQUID -> 60000.0;
-            case BULK -> 130000.0;
+            case CONTAINER -> 100.0;
+            case LIQUID -> 500.0;
+            case BULK -> 2000.0;
         };
         return (weight/carryingCapacityCrane)/60.0; //конвертируем в час
     }
