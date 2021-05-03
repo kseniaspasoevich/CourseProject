@@ -6,7 +6,7 @@ public class MainService1 {
 
         System.out.println("Time table: \n");
 
-        for (int i = 1; i <= 15; i++) {
+        for (int i = 1; i <= 10; i++) {
             System.out.println(i + ":");
             TimeTable obj = new TimeTable();
             System.out.println(obj);

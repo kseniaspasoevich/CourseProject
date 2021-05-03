@@ -64,7 +64,7 @@ public class RandomFieldsGenerator {
         double carryingCapacityCrane = switch (type){
             case CONTAINER -> 100.0;
             case LIQUID -> 500.0;
-            case BULK -> 2000.0;
+            case BULK -> 1000.0;
         };
         return (weight/carryingCapacityCrane)/60.0; //конвертируем в час
     }
