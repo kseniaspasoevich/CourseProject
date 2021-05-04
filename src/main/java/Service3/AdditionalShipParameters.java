@@ -1,19 +1,26 @@
 package Service3;
 
-
 import Service1.*;
 
-public class AdditionalParameters extends TimeTable {
+import java.sql.Time;
+import java.time.LocalDate;
+
+public class AdditionalShipParameters extends TimeTable {
 
     private double delayUnload; //задержка разгрузки
     private double penalty;    //штраф
     private double arrivalDeviation; //отклонение в прибытии
+    private Time realTimeOfArrival; //Точное время прибытия
+    private LocalDate realDayOfArrival; //точная дата прибытия
 
-    public AdditionalParameters() {
+
+    public AdditionalShipParameters() {
         super();
         this.delayUnload = ExecutionOfService3.getUnloadDelay();
         this.penalty = ExecutionOfService3.getPenalty(delayUnload);
         this.arrivalDeviation = ExecutionOfService3.getArrivalDeviation();
+        this.realTimeOfArrival=ExecutionOfService3.getRealTimeOfArrival(arrivalDeviation);
+        this.realDayOfArrival=ExecutionOfService3.getRealDayOfArrival(arrivalDeviation);
     }
 
     public double getDelayUnload() {
@@ -39,5 +46,21 @@ public class AdditionalParameters extends TimeTable {
     public void setArrivalDeviation(double arrivalDeviation) {
         this.arrivalDeviation = arrivalDeviation;
     }
+    public Time getRealTimeOfArrival() {
+        return realTimeOfArrival;
+    }
+
+    public void setRealTimeOfArrival(Time realTimeOfArrival) {
+        this.realTimeOfArrival = realTimeOfArrival;
+    }
+
+    public LocalDate getRealDayOfArrival() {
+        return realDayOfArrival;
+    }
+
+    public void setRealDayOfArrival(LocalDate realDayOfArrival) {
+        this.realDayOfArrival = realDayOfArrival;
+    }
 
 }
+

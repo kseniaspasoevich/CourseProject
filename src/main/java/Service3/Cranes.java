@@ -1,29 +1,19 @@
 package Service3;
 
-public class Cranes {
-    public static void main(String[] args) {
-        System.out.println(Thread.currentThread()); //automatically generated  thread
+import Service1.Type;
 
-        new Thread(){  //our own thread
-            @Override
-            public void run(){
-                System.out.println(Thread.currentThread());
-            }
-        }.start();
+public class Cranes extends Thread{
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+    private AdditionalShipParameters ship;
 
-            }
-        })
+    public Cranes(AdditionalShipParameters s) {
+        this.ship=s;
+    }
 
-        {  //our own thread
-            @Override
-            public void run(){
-                System.out.println(Thread.currentThread());
-            }
-        }.start();
+    @Override
+    public void run() {
+     Unloading.unload();
     }
 
 }
+

@@ -1,6 +1,5 @@
 package Service3;
 
-import Service1.TimeTable;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -15,11 +14,11 @@ public class FromJSON {
             ObjectMapper objectMapper=new ObjectMapper();
             JsonFactory jf=new JsonFactory();
             JsonParser jp = jf.createParser(new File("timeTable.json"));
-            List<TimeTable> lst=null;
+            List<AdditionalShipParameters> lst=null;
 
-            TypeReference<List<TimeTable>> tRef = new TypeReference<List<TimeTable>>() {};
+            TypeReference<List<AdditionalShipParameters>> tRef = new TypeReference<List<AdditionalShipParameters>>() {};
             lst = objectMapper.readValue(jp, tRef);
-            for (TimeTable user : lst) {
+            for (AdditionalShipParameters user : lst) {
                 System.out.println(user.toString());
             }
 
@@ -27,6 +26,7 @@ public class FromJSON {
         catch (IOException e){
             e.printStackTrace();
         }
+
     }
 
 }

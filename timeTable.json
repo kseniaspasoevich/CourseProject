@@ -1,43 +1,51 @@
 [ {
-  "name" : "800Aurora",
-  "time" : "01:19:24",
-  "day" : "26/11/2020",
+  "name" : "587Sava",
+  "time" : "11:35:09",
+  "day" : "22/11/2020",
   "type" : "CONTAINER",
-  "weight" : 38206.01657051306,
-  "unload" : 6.367669428418842
+  "weight" : 45749.0300566677,
+  "unload" : 7.6248383427779505,
+  "startUnload" : null,
+  "delayUnload" : 10.829252458970808,
+  "arrivalDeviation" : -46.277924337354506
 }, {
-  "name" : "213Spb",
-  "time" : "20:29:01",
-  "day" : "07/11/2020",
+  "name" : "826Titan",
+  "time" : "08:22:36",
+  "day" : "11/11/2020",
   "type" : "CONTAINER",
-  "weight" : 47746.455157071905,
-  "unload" : 7.9577425261786505
+  "weight" : 57289.82448226664,
+  "unload" : 9.548304080377772,
+  "startUnload" : null,
+  "delayUnload" : 0.9195829037322705,
+  "arrivalDeviation" : -38.47453209540521
 }, {
-  "name" : "630Olimpic",
-  "time" : "07:33:12",
-  "day" : "28/11/2020",
-  "type" : "CONTAINER",
-  "weight" : 54452.255377968264,
-  "unload" : 9.075375896328044
-}, {
-  "name" : "193Aqua",
-  "time" : "04:52:22",
-  "day" : "01/11/2020",
+  "name" : "845Titan",
+  "time" : "12:49:52",
+  "day" : "29/11/2020",
   "type" : "BULK",
-  "weight" : 565129.4315291031,
-  "unload" : 9.418823858818383
+  "weight" : 531641.436155104,
+  "unload" : 8.860690602585066,
+  "startUnload" : null,
+  "delayUnload" : 15.610932392160354,
+  "arrivalDeviation" : -32.57158708445803
 }, {
-  "name" : "551Pacific",
-  "time" : "08:46:21",
-  "day" : "20/11/2020",
-  "type" : "LIQUID",
-  "weight" : 241480.14683693618,
-  "unload" : 8.049338227897872
+  "name" : "381Aqua",
+  "time" : "07:11:21",
+  "day" : "17/11/2020",
+  "type" : "CONTAINER",
+  "weight" : 39877.44909899139,
+  "unload" : 6.646241516498565,
+  "startUnload" : null,
+  "delayUnload" : 23.84275733664861,
+  "arrivalDeviation" : 65.45320661386754
 }, {
-  "name" : "Ksenia",
-  "time" : "03:20:22",
-  "day" : "08/11/2020",
-  "type" : "LIQUID",
-  "weight" : 400000.0,
-  "unload" : 13.333333333333334
+  "name" : "340Lusitania2",
+  "time" : "22:21:41",
+  "day" : "28/11/2020",
+  "type" : "BULK",
+  "weight" : 635236.9126003854,
+  "unload" : 10.58728187667309,
+  "startUnload" : null,
+  "delayUnload" : 5.059254246075858,
+  "arrivalDeviation" : 143.35296857063133
 } ]
