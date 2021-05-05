@@ -2,45 +2,51 @@ package Service3;
 
 import Service1.*;
 
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.Period;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Unloading {
     private static AdditionalShipParameters ship;
+    static Queue<AdditionalShipParameters> shipQueue=new LinkedList<>();
+    static boolean unloadIsDone;
+
+
 
     public static boolean shipArrived(){
         return true;
     }
+    public static boolean isUnloaded(){
+        return true;
+    }
 
-    public static void startUnloading(Type typeOfShip){ //начинаем разгрузку,
+    public static void startUnloading(Type typeOfShip) { //начинаем разгрузку,
         /// она зависит от веса и типа, получается и какая-то задержка разгрузки возможно
-        //сгенери вес на основе типа, не забудь!!
-        double unload=ship.getUnload();
-        double unloadDelay=ship.getDelayUnload();
-        System.out.println("Unload expected: "+unload);
-        System.out.println("Unload delay: "+ unloadDelay);
-        System.out.println("Full unloading took "+unload+unloadDelay+" hours");
-        System.out.println("Penalty: "+ship.getPenalty());
+        //Проверить есть ли задержка разгрузки
+        double weightOfCargo = RandomFieldsGenerator.getWeight(typeOfShip);
+        double estimatedUnload = RandomFieldsGenerator.getUnload(typeOfShip, weightOfCargo);
+        double delay = ExecutionOfService3.getUnloadDelay();
+        double fullUnload=estimatedUnload+delay;
+        System.out.println(String.valueOf(typeOfShip));
+        System.out.println("Estimated: "+ estimatedUnload+" hours");
+        System.out.println("Delay: "+ delay+ " hours");
+        System.out.println("Penalty: "+ ExecutionOfService3.getPenalty(delay));
+        System.out.println("Full unload took "+fullUnload+" hours\n");
     }
 
     public static void unload()
     {
         while (shipArrived()){
-            double arriveTimeDeviation=ship.getArrivalDeviation(); //корабль прибыл раньше или позже или вовремя
-
-            if (arriveTimeDeviation==0.00){
-                System.out.println("Arrived ON TIME!");
+            Unloading.shipQueue.add(ship);
+            if (Unloading.unloadIsDone==isUnloaded()) //correct the logic somehow
+            {
+                AdditionalShipParameters nextShip=shipQueue.element();
+                System.out.println("Next ship: "+ nextShip); //перегрузить метод toString in AdditionalShipParameters
+                Type typeOfNextShip=nextShip.getType();
+                startUnloading(typeOfNextShip);
             }
             else {
-                System.out.println("Arrival deviation: "+ arriveTimeDeviation);
-                System.out.println("RealArrivalTime: "+ ExecutionOfService3.getRealTimeOfArrival(arriveTimeDeviation));
+                startUnloading(Type.CONTAINER);
             }
-
-            //print exact date and time of arrival
-            startUnloading(Type.CONTAINER);
-            startUnloading(Type.LIQUID);
-            startUnloading(Type.BULK);
 
         }
     }

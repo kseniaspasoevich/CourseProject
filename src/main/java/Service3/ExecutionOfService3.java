@@ -14,6 +14,11 @@ public class ExecutionOfService3 {
         return ((double) (Math.random() * 24.0));
     }
 
+    public static double getFullUnloadTime(double unloadTime, double unloadDelayTime) { //задержка разгрузки в часах (случайная величина от 0 до 1440 минутах (24 часа))
+
+        return (unloadDelayTime+unloadTime);
+    }
+
     public static double getArrivalDeviation() {  //отклонение в прибытии
 
         double minimalArrivalEarlier = -168.0; //7 дней (7*24 часов)
@@ -25,31 +30,31 @@ public class ExecutionOfService3 {
         return delay * 100;
     }
 
-    static Time getRealTimeOfArrival(double deviation){
+    static Time getRealTimeOfArrival(Time estimatedTime, double deviation){
         //получаем реальное время прибытия корабля расписание+отклонение
         //отклонение преобразуем в время типа Time
-        Time randomTime= RandomFieldsGenerator.getTime(); //время по рассписанию
-        long deviationInMillis= (long) (deviation*86_400_000); //86400*1000, конвертируем отклонение из часов в милисекунды
-        long timeAccordingToScedule= randomTime.getTime(); //конвертитуем время по рассписанию в милисекунды
-        long realTime=(long) ((deviationInMillis+timeAccordingToScedule)*24 * 60 * 60 * 1000); //получаем точное время
+        long deviationInMillis= (long) (deviation*86400*1000); //конвертируем отклонение из часов в милисекунды
+        long fullTime=estimatedTime.getTime()+deviationInMillis; //конвертитуем время по рассписанию в милисекунды
+        long realTime=(long) (fullTime*24 * 60 * 60); //получаем точное время
         //не забываем что отклонение может идти и с минусом, т.к. судно можеть заранее прибыть
-        Time time=new Time(realTime);
-        return time;
+        Time timeOfArrival=new Time(realTime);
+        return timeOfArrival;
     }
-    static LocalDate getRealDayOfArrival(double deviation){
-        LocalDate day1= RandomFieldsGenerator.getDay();
-        if (deviation>24.00){ //день позже
-            int exactAmountOfDaysLater= (int) (deviation/24);
-            return day1.plus(Period.ofDays(exactAmountOfDaysLater));
+
+    //здесь есть маленькая нелогичность
+    static LocalDate getRealDayOfArrival(LocalDate estimatedDay, Time realArrivalTime, double deviation){
+        if (deviation>0.00){ //день позже
+            int exactAmountOfDaysLater= (int) (deviation/24.0);
+            return estimatedDay.plus(Period.ofDays(exactAmountOfDaysLater));
         }
-        else if (deviation<-24.00){ //день раньше
-            int exactAmountOfDaysEarly= (int) (deviation/24);
-            return day1.minus(Period.ofDays(exactAmountOfDaysEarly));
+        else /*if (deviation<-24.00)*/{ //день раньше
+            int exactAmountOfDaysEarly= (int) (deviation/24.0);
+            return estimatedDay.minus(Period.ofDays(exactAmountOfDaysEarly));
 
         }
-        else{
-            return day1; //возвращает ту же дату потому что задержка всего несколько часов ТОГО же дня
-        }
+        /*else{
+            return estimatedDay; //возвращает ту же дату потому что задержка всего несколько часов ТОГО же дня
+        }*/
     }
 
 }
