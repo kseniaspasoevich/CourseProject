@@ -1,66 +1,36 @@
 [ {
-  "name" : "745Moscow",
-  "time" : "04:00:12",
+  "name" : "224Vltava",
+  "time" : "22:16:48",
   "day" : "22/11/2020",
-  "type" : "BULK",
-  "weight" : 870446.517731085,
-  "unload" : 14.50744196218475,
-  "delayUnload" : 19.85630941783105,
-  "fullUnload" : 34.3637513800158,
-  "penalty" : 1985.6309417831048,
-  "arrivalDeviation" : 7.891510056131125,
-  "realTimeOfArrival" : "06:21:36",
-  "realDayOfArrival" : "22/11/2020"
+  "type" : "LIQUID",
+  "weight" : 58299.30139120818,
+  "unload" : 1.9433100463736062
 }, {
-  "name" : "218Dolphin",
-  "time" : "12:33:11",
-  "day" : "11/11/2020",
+  "name" : "830MikhailSvetlov",
+  "time" : "10:08:03",
+  "day" : "21/11/2020",
   "type" : "BULK",
-  "weight" : 939094.3103507735,
-  "unload" : 15.651571839179558,
-  "delayUnload" : 4.340020192307289,
-  "fullUnload" : 19.991592031486846,
-  "penalty" : 434.00201923072893,
-  "arrivalDeviation" : 106.0894665534579,
-  "realTimeOfArrival" : "23:58:33",
-  "realDayOfArrival" : "15/11/2020"
+  "weight" : 443586.98575606034,
+  "unload" : 7.393116429267673
 }, {
-  "name" : "11Blue",
-  "time" : "18:12:58",
-  "day" : "11/11/2020",
-  "type" : "BULK",
-  "weight" : 1013587.4301221181,
-  "unload" : 16.893123835368634,
-  "delayUnload" : 15.958444911203447,
-  "fullUnload" : 32.851568746572084,
-  "penalty" : 1595.8444911203446,
-  "arrivalDeviation" : -75.25674255014175,
-  "realTimeOfArrival" : "20:00:57",
-  "realDayOfArrival" : "14/11/2020"
-}, {
-  "name" : "71Titanic3",
-  "time" : "15:29:00",
+  "name" : "687Maurithania",
+  "time" : "01:00:13",
   "day" : "08/11/2020",
-  "type" : "CONTAINER",
-  "weight" : 48655.18602264888,
-  "unload" : 8.10919767044148,
-  "delayUnload" : 18.600453709416314,
-  "fullUnload" : 26.709651379857796,
-  "penalty" : 1860.0453709416315,
-  "arrivalDeviation" : -65.41236240911783,
-  "realTimeOfArrival" : "21:18:43",
-  "realDayOfArrival" : "10/11/2020"
+  "type" : "LIQUID",
+  "weight" : 421487.8537107785,
+  "unload" : 14.049595123692617
 }, {
-  "name" : "65Lusitania2",
-  "time" : "05:13:26",
-  "day" : "08/11/2020",
+  "name" : "459Ocean",
+  "time" : "01:32:02",
+  "day" : "20/11/2020",
+  "type" : "LIQUID",
+  "weight" : 160617.43086612155,
+  "unload" : 5.353914362204051
+}, {
+  "name" : "656MikhailSvetlov",
+  "time" : "23:26:25",
+  "day" : "16/11/2020",
   "type" : "BULK",
-  "weight" : 134543.60164174635,
-  "unload" : 2.2423933606957727,
-  "delayUnload" : 1.0168182968496113,
-  "fullUnload" : 3.259211657545384,
-  "penalty" : 101.68182968496113,
-  "arrivalDeviation" : 16.288211879074595,
-  "realTimeOfArrival" : "16:00:28",
-  "realDayOfArrival" : "08/11/2020"
+  "weight" : 637827.2601311294,
+  "unload" : 10.630454335518824
 } ]

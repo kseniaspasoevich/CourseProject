@@ -3,17 +3,19 @@ package Service3;
 import Service1.*;
 
 import java.sql.Time;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class AdditionalShipParameters extends TimeTable {
 
     private double delayUnload; //задержка разгрузки
-    double fullUnload; //полная разгрузка
+    private double fullUnload; //полная разгрузка
     private double penalty;    //штраф
     private double arrivalDeviation; //отклонение в прибытии
     private Time realTimeOfArrival; //Точное время прибытия
     private LocalDate realDayOfArrival; //точная дата прибытия
+    private double waitingForUnload; //время ожидания разгрузки
 
 
     public AdditionalShipParameters() {
@@ -24,6 +26,7 @@ public class AdditionalShipParameters extends TimeTable {
         this.realTimeOfArrival=ExecutionOfService3.getRealTimeOfArrival(time, arrivalDeviation);
         this.realDayOfArrival=ExecutionOfService3.getRealDayOfArrival(day, realTimeOfArrival, arrivalDeviation); //поправить
         this.fullUnload=ExecutionOfService3.getFullUnloadTime(unload, delayUnload);
+        this.waitingForUnload=ExecutionOfService3.getTimeOfWaitingUnload(fullUnload);
     }
 
     public double getFullUnload() {
@@ -65,7 +68,14 @@ public class AdditionalShipParameters extends TimeTable {
         this.realTimeOfArrival = realTimeOfArrival;
     }
 
-    /*public LocalDate getRealDayOfArrival() {
+    public double getWaitingForUnload() {
+        return waitingForUnload;
+    }
+
+    public void setWaitingForUnload(double waitingForUnload) {
+        this.waitingForUnload = waitingForUnload;
+    }
+ /*public LocalDate getRealDayOfArrival() {
         return realDayOfArrival;
     }
 
@@ -86,6 +96,17 @@ public class AdditionalShipParameters extends TimeTable {
             this.realDayOfArrival = (LocalDate) day;
         }
     }
+
+    @Override
+    public String toString(){
+        DecimalFormat df2 = new DecimalFormat("0.00");
+        return  super.toString()+"\nDelay Unload: "+df2.format(delayUnload)+ " hours"+"\nPenalty: " + df2.format(penalty) + " y. e."+
+                "\nArrival Deviation: " + df2.format(arrivalDeviation)+ " hours"+
+                "\nReal Day of Arrival: " + realDayOfArrival + "\nReal time of Arrival: " + realTimeOfArrival +
+                "\nFull unload took: "
+                + df2.format(fullUnload) + " hours\n" +  "-------------------------\n";
+    }
+
 
 }
 

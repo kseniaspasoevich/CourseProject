@@ -12,7 +12,7 @@ public class Cranes extends Thread{
 
     @Override
     public void run() {
-     Unloading.unload();
+     Unloading.unloading(5);
     }
 
 }

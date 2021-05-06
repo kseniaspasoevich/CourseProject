@@ -36,7 +36,9 @@ public class TimeTable {
     @Override
     public String toString() {
         DecimalFormat df2 = new DecimalFormat("0.00");
-        return name + "\n" + time + "\n" + day + "\n" + type + "\n" + df2.format(weight) + " tones\n"
+        return "\nName of the ship: "+name + "\nEstimated time: " + time + "\nEstimated day: " + day + "\nType: " + type +
+                "\nWeight: " + df2.format(weight) +
+                " tones\nEstimated duration of unload: "
                 + df2.format(unload) + " hours\n" +  "-------------------------\n";
     }
 

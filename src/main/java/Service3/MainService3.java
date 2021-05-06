@@ -9,9 +9,10 @@ public class MainService3 {
     public static void main(String[] args) throws IOException {
         /*System.out.println("Data from JSON file: \n");
         FromJSON.deserialize();*/
-        Unloading.startUnloading(Type.CONTAINER);
-        Unloading.startUnloading(Type.BULK);
-        Unloading.startUnloading(Type.LIQUID);
+        //Unloading.unloading(5);
+        //Unloading.startUnloading(Type.LIQUID);
+        Unloading.doSomething(5);
+
 
     }
 

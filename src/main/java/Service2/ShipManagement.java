@@ -1,6 +1,7 @@
 package Service2;
 
 import Service1.RandomFieldsGenerator;
+import Service1.TimeTable;
 import Service1.Type;
 import Service3.AdditionalShipParameters;
 
@@ -70,7 +71,7 @@ public class ShipManagement {
 
     public static void generateShips(int initialAmountOfShips){
         for (int i = 1; i <= initialAmountOfShips; i++) {
-            AdditionalShipParameters obj = new AdditionalShipParameters();
+            TimeTable obj = new TimeTable();
             List1.add(obj);
         }
     }
