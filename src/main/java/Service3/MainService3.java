@@ -11,7 +11,7 @@ public class MainService3 {
         FromJSON.deserialize();*/
         //Unloading.unloading(5);
         //Unloading.startUnloading(Type.LIQUID);
-        Unloading.doSomething(5);
+        Unloading.setArrivedShips(5);
 
 
     }

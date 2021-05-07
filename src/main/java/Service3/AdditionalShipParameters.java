@@ -1,21 +1,24 @@
 package Service3;
 
 import Service1.*;
+import Service2.*;
 
 import java.sql.Time;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static Service2.Global.shipQueue;
+
 public class AdditionalShipParameters extends TimeTable {
 
-    private double delayUnload; //задержка разгрузки
-    private double fullUnload; //полная разгрузка
-    private double penalty;    //штраф
-    private double arrivalDeviation; //отклонение в прибытии
-    private Time realTimeOfArrival; //Точное время прибытия
-    private LocalDate realDayOfArrival; //точная дата прибытия
-    private double waitingForUnload; //время ожидания разгрузки
+    protected double delayUnload; //задержка разгрузки
+    protected double fullUnload; //полная разгрузка
+    protected double penalty;    //штраф
+    protected double arrivalDeviation; //отклонение в прибытии
+    protected Time realTimeOfArrival; //Точное время прибытия
+    protected LocalDate realDayOfArrival; //точная дата прибытия
+    protected Time waitingForUnload; //время ожидания разгрузки
 
 
     public AdditionalShipParameters() {
@@ -26,7 +29,7 @@ public class AdditionalShipParameters extends TimeTable {
         this.realTimeOfArrival=ExecutionOfService3.getRealTimeOfArrival(time, arrivalDeviation);
         this.realDayOfArrival=ExecutionOfService3.getRealDayOfArrival(day, realTimeOfArrival, arrivalDeviation); //поправить
         this.fullUnload=ExecutionOfService3.getFullUnloadTime(unload, delayUnload);
-        this.waitingForUnload=ExecutionOfService3.getTimeOfWaitingUnload(fullUnload);
+        this.waitingForUnload=ExecutionOfService3.getTimeOfWaitingUnload(realTimeOfArrival, shipQueue);
     }
 
     public double getFullUnload() {
@@ -68,11 +71,11 @@ public class AdditionalShipParameters extends TimeTable {
         this.realTimeOfArrival = realTimeOfArrival;
     }
 
-    public double getWaitingForUnload() {
+    public Time getWaitingForUnload() {
         return waitingForUnload;
     }
 
-    public void setWaitingForUnload(double waitingForUnload) {
+    public void setWaitingForUnload(Time waitingForUnload) {
         this.waitingForUnload = waitingForUnload;
     }
  /*public LocalDate getRealDayOfArrival() {

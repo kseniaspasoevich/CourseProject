@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import static Service2.GlobalArrayList.List1;
+import static Service2.Global.List1;
 
 public class ShipManagement {
 
@@ -22,7 +22,7 @@ public class ShipManagement {
             String answer1 = input.next();
 
             if (answer1.equals("n")) {
-                ToJSON.serialize();
+                ToJSON.serializeEstimatedSchedule();
                 System.out.println("Time table completed! Check JSON file!");
                 System.exit(0);
                 break;
@@ -60,7 +60,7 @@ public class ShipManagement {
                 System.out.println("-------------------");
                 System.out.println(newShip);
                 List1.add(newShip);
-                ToJSON.serialize();
+                ToJSON.serializeEstimatedSchedule();
 
             } else {
                 System.out.println("Invalid symbol!");

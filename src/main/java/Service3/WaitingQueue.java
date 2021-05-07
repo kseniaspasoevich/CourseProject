@@ -9,20 +9,24 @@ import java.time.LocalDate;
 
 //судно прибывает в порт, с текущими данными мы его закидиваем в очередь
 //а потом и в новый json файл report.json
-public class QueueElements extends AdditionalShipParameters{
+public class WaitingQueue {
     private String  nameOfTheShip;
     private Time estimatedTimeOfArrival;
     private double deviationInArrival;
     private Time definiteTimeOfArrival;
+    //private Time WaitingInQueue; //время ожидания в очереди
+    //private Time beginingOfUnloading; //начало разгрузки
     private LocalDate estimatedDayOfArrival;
     private LocalDate RealDayOfArrival;
     private Type typeOfTheShip;
     private double  exactWeight;
-    private double estimatedTimeOfUnload;
+    public double estimatedTimeOfUnload;
 
-    public QueueElements(String nameOfTheShip, Time estimatedTimeOfArrival, double deviationInArrival, Time definiteTimeOfArrival,
-                         LocalDate estimatedDayOfArrival, LocalDate RealDayOfArrival, Type typeOfTheShip, double exactWeight,
-                         double estimatedTimeOfUnload) {
+    public WaitingQueue() {}
+
+    public WaitingQueue(String nameOfTheShip, Time estimatedTimeOfArrival, double deviationInArrival, Time definiteTimeOfArrival,
+                        LocalDate estimatedDayOfArrival, LocalDate RealDayOfArrival, Type typeOfTheShip, double exactWeight,
+                        double estimatedTimeOfUnload) {
         this.nameOfTheShip = nameOfTheShip;
         this.estimatedTimeOfArrival = estimatedTimeOfArrival;
         this.deviationInArrival=deviationInArrival;
@@ -100,7 +104,7 @@ public class QueueElements extends AdditionalShipParameters{
 
     @Override
     public String toString() {
-        return "\nQueueElements{\n" +
+        return "\nWaitingQueue{\n" +
                 "nameOfTheShip='" + nameOfTheShip + "\n" +
                 ", estimatedTimeOfArrival=" + estimatedTimeOfArrival + "\n"+
                 ", deviationInArrival=" + deviationInArrival + "\n"+

@@ -5,16 +5,19 @@ import Service1.RandomFieldsGenerator;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Queue;
 import java.util.Random;
 
 public class ExecutionOfService3 {
 
-    public static double getUnloadDelay() { //задержка разгрузки в часах (случайная величина от 0 до 1440 минутах (24 часа))
+    public static double getUnloadDelay() { //задержка разгрузки в часах
+        // (случайная величина от 0 до 1440 минутах (24 часа))
 
         return ((double) (Math.random() * 24.0));
     }
 
-    public static double getFullUnloadTime(double unloadTime, double unloadDelayTime) { //задержка разгрузки в часах (случайная величина от 0 до 1440 минутах (24 часа))
+    public static double getFullUnloadTime(double unloadTime, double unloadDelayTime) {
+        //задержка разгрузки в часах (случайная величина от 0 до 1440 минутах (24 часа))
 
         return (unloadDelayTime+unloadTime);
     }
@@ -57,8 +60,23 @@ public class ExecutionOfService3 {
         }*/
     }
 
-    static double getTimeOfWaitingUnload(double previousUnload){
-        return previousUnload;
+    //закончи
+    static Time getTimeOfWaitingUnload(Time arrivalTime, Queue<WaitingQueue> shipQueue){
+
+        WaitingQueue element = new WaitingQueue();
+
+        /*if (element.equals(shipQueue.peek())) {
+            Time arrivalTimeDouble=ExecutionOfService3.getRealTimeOfArrival(RandomFieldsGenerator.getTime(),
+                    ExecutionOfService3.getArrivalDeviation());
+            double timeToDouble=arrivalTimeDouble.getTime();
+        }
+        else {
+            double time1=0.99999;
+        }*/
+
+        double time1=0.99999;
+        Time time=new Time((long) time1);
+        return time ;
     }
 
 }
