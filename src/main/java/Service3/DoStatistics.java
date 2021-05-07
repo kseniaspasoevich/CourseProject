@@ -2,6 +2,7 @@ package Service3;
 
 import java.sql.Time;
 
+//эта часть кода ждёт обработку
 public class DoStatistics {
 
     public static int getUnloadedShipsAmount(){
