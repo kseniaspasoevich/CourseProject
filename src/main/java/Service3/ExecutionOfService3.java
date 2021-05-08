@@ -8,6 +8,8 @@ import java.time.Period;
 import java.util.Queue;
 import java.util.Random;
 
+import static Service2.Global.shipQueue;
+
 public class ExecutionOfService3 {
 
     public static double getUnloadDelay() { //задержка разгрузки в часах
@@ -64,14 +66,13 @@ public class ExecutionOfService3 {
     static Time getTimeOfWaitingUnload(Time arrivalTime, Queue<WaitingQueue> shipQueue){
 
         WaitingQueue element = new WaitingQueue();
+       /* while (!(shipQueue.isEmpty())){
 
-        /*if (element.equals(shipQueue.peek())) {
             Time arrivalTimeDouble=ExecutionOfService3.getRealTimeOfArrival(RandomFieldsGenerator.getTime(),
                     ExecutionOfService3.getArrivalDeviation());
             double timeToDouble=arrivalTimeDouble.getTime();
-        }
-        else {
-            double time1=0.99999;
+            double unloadLength=ExecutionOfService3.getFullUnloadTime(RandomFieldsGenerator.getUnload(), ExecutionOfService3.getUnloadDelay());
+
         }*/
 
         double time1=0.99999;

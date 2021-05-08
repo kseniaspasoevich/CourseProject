@@ -2,7 +2,7 @@ package Service3;
 
 import java.sql.Time;
 
-//эта часть кода ждёт обработку
+//эта часть кода ждёт обработку и не имеет никакого смысла
 public class DoStatistics {
 
     public static int getUnloadedShipsAmount(){

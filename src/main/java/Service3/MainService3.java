@@ -1,8 +1,5 @@
 package Service3;
 
-import Service1.Type;
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.io.IOException;
 
 public class MainService3 {
@@ -11,7 +8,7 @@ public class MainService3 {
         FromJSON.deserialize();*/
         //Unloading.unloading(5);
         //Unloading.startUnloading(Type.LIQUID);
-        Unloading.setArrivedShips(5);
+        Unloading.getUnloadingReports(10);
 
 
     }
