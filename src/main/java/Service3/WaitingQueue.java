@@ -15,7 +15,7 @@ public class WaitingQueue {
     private double deviationInArrival;
     private Time definiteTimeOfArrival;
     //private Time WaitingInQueue; //время ожидания в очереди
-    //private Time beginingOfUnloading; //начало разгрузки
+    //private Time beginingOfUnloading; //начало разгрузки3
     private LocalDate estimatedDayOfArrival;
     private LocalDate RealDayOfArrival;
     private Type typeOfTheShip;
