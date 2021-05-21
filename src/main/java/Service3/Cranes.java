@@ -4,11 +4,11 @@ import Service1.Type;
 
 public class Cranes extends Thread{
 
-    private AdditionalShipParameters ship;
+    //private AdditionalShipParameters ship;
 
-    public Cranes(AdditionalShipParameters s) {
-        this.ship=s;
-    }
+    //public Cranes(AdditionalShipParameters s) {
+       // this.ship=s;
+    //}
 
     @Override
     public void run() {

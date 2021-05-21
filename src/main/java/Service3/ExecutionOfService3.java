@@ -1,6 +1,7 @@
 package Service3;
 
 import Service1.RandomFieldsGenerator;
+import Service1.Type;
 
 import java.sql.Time;
 import java.time.LocalDate;
@@ -62,22 +63,22 @@ public class ExecutionOfService3 {
         }*/
     }
 
-    //закончи
-    static Time getTimeOfWaitingUnload(Time arrivalTime, Queue<WaitingQueue> shipQueue){
-
-        WaitingQueue element = new WaitingQueue();
-       /* while (!(shipQueue.isEmpty())){
-
-            Time arrivalTimeDouble=ExecutionOfService3.getRealTimeOfArrival(RandomFieldsGenerator.getTime(),
-                    ExecutionOfService3.getArrivalDeviation());
-            double timeToDouble=arrivalTimeDouble.getTime();
-            double unloadLength=ExecutionOfService3.getFullUnloadTime(RandomFieldsGenerator.getUnload(), ExecutionOfService3.getUnloadDelay());
-
-        }*/
-
-        double time1=0.99999;
-        Time time=new Time((long) time1);
-        return time ;
+    //problem here!
+    public static Time getTimeOfWaitingForUnloading(Type typeOfShip, double estimatedUnload) {
+        double delay = ExecutionOfService3.getUnloadDelay();
+        long timeOfWaiting= (long) (estimatedUnload+delay);
+        Time time= new Time(timeOfWaiting);
+        return time;
     }
+
+    public static Time getBeginningUnloading(Time timeWaiting, Time arrivalTime) {
+        long t1=timeWaiting.getTime();
+        long t2=arrivalTime.getTime();
+        long begining=t1+t2;
+        Time beginingUnloadTime=new Time(begining);
+        return beginingUnloadTime;
+
+    }
+
 
 }

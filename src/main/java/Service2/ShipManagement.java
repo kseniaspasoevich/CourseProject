@@ -3,7 +3,6 @@ package Service2;
 import Service1.RandomFieldsGenerator;
 import Service1.TimeTable;
 import Service1.Type;
-import Service3.AdditionalShipParameters;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -28,7 +27,7 @@ public class ShipManagement {
                 break;
             }
             else if (answer1.equals("y")) {
-                AdditionalShipParameters newShip = new AdditionalShipParameters();
+                TimeTable newShip = new TimeTable();
 
                 System.out.println("Enter the name of the ship:  ");
                 String name = input.next();

@@ -8,6 +8,7 @@ import java.util.Queue;
 
 public class Global {
     public static ArrayList<TimeTable> List1 = new ArrayList<>();
+    public static ArrayList<WaitingQueue> List2 = new ArrayList<>();
     public static Queue<WaitingQueue> shipQueue=new LinkedList<>();
 }
 
