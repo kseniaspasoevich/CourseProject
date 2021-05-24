@@ -36,7 +36,7 @@ public class ExecutionOfService3 {
         return delay * 100;
     }
 
-    static Time getRealTimeOfArrival(Time estimatedTime, double deviation){
+    public static Time getRealTimeOfArrival(Time estimatedTime, double deviation){
         //получаем реальное время прибытия корабля расписание+отклонение
         //отклонение преобразуем в время типа Time
         long deviationInMillis= (long) (deviation*86400*1000); //конвертируем отклонение из часов в милисекунды
@@ -48,7 +48,7 @@ public class ExecutionOfService3 {
     }
 
     //здесь есть маленькая нелогичность
-    static LocalDate getRealDayOfArrival(LocalDate estimatedDay, Time realArrivalTime, double deviation){
+    public static LocalDate getRealDayOfArrival(LocalDate estimatedDay, Time realArrivalTime, double deviation){
         if (deviation>0.00){ //день позже
             int exactAmountOfDaysLater= (int) (deviation/24.0);
             return estimatedDay.plus(Period.ofDays(exactAmountOfDaysLater));

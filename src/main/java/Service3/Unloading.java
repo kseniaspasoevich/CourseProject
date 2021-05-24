@@ -1,14 +1,10 @@
 package Service3;
 
-import Service1.*;
+import Service1.Type;
 import Service2.ToJSON;
+import org.springframework.cglib.beans.BulkBean;
 
 import java.io.IOException;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.Queue;
-
 import static Service2.Global.*;
 
 public class Unloading {
@@ -32,23 +28,7 @@ public class Unloading {
 
     public static void getUnloadingReports(int amountOfShips) throws IOException {
         for (int i=0; i<amountOfShips; i++){ //Закыдиваем все судна в очередь
-            String NAME=RandomFieldsGenerator.getName();
-            Time ESTIMATEDTIME=RandomFieldsGenerator.getTime();
-            double DEVIATION=ExecutionOfService3.getArrivalDeviation();
-            Time REALTIME=ExecutionOfService3.getRealTimeOfArrival(ESTIMATEDTIME, DEVIATION);
-            LocalDate DATE=RandomFieldsGenerator.getDay();
-            LocalDate REALDATE=ExecutionOfService3.getRealDayOfArrival(DATE, REALTIME, DEVIATION);
-            Type TYPE=RandomFieldsGenerator.getType();
-            double WEIGHT=RandomFieldsGenerator.getWeight(TYPE);
-            double UNLOADEXPECTED=RandomFieldsGenerator.getUnload(TYPE, WEIGHT);
-            Time WAITINGINQUEUE=ExecutionOfService3.getTimeOfWaitingForUnloading(TYPE, UNLOADEXPECTED);
-            Time BEGININGUNLOADTIME=ExecutionOfService3.getBeginningUnloading(WAITINGINQUEUE, REALTIME);
-            double UNLOADDELAY=ExecutionOfService3.getUnloadDelay();
-            double PENALTY=ExecutionOfService3.getPenalty(UNLOADDELAY);
-
-            WaitingQueue newShip=new WaitingQueue(NAME, ESTIMATEDTIME, DEVIATION, REALTIME, WAITINGINQUEUE,
-                    BEGININGUNLOADTIME, DATE, REALDATE, TYPE,
-                    WEIGHT, UNLOADEXPECTED, UNLOADDELAY, PENALTY); //создаём новое судно на каждой итерации
+            WaitingQueue newShip=new WaitingQueue(); //создаём новое судно на каждой итерации
             shipQueue.add(newShip); //добавляем в очередь
             List2.add(newShip); //для добавления в json файл
             ToJSON.serializeReport();
@@ -64,4 +44,17 @@ public class Unloading {
             System.out.println("-------------------------------");
         }
     }
+
+    public static void simulate(){
+        WaitingQueue unloader1 = new WaitingQueue(Type.CONTAINER);
+        WaitingQueue unloader2 = new WaitingQueue(Type.LIQUID);
+        WaitingQueue unloader3 = new WaitingQueue(Type.BULK);
+        Thread t1 = new Thread(unloader1);
+        Thread t2 = new Thread(unloader2);
+        Thread t3 = new Thread(unloader3);
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+
 }

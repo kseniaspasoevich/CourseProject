@@ -1,28 +1,25 @@
 package restcontroller;
 
-
+import Service1.RandomFieldsGenerator;
 import Service1.TimeTable;
-import Service3.FromJSON;
-import Service3.FromJSON;
+import Service1.Type;
+import Service2.ToJSON;
+import Service3.ExecutionOfService3;
 import Service3.WaitingQueue;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Service2.Global.List2;
+import static Service2.Global.*;
 
 @RestController
 @RequestMapping("/api")
@@ -37,74 +34,40 @@ public class TimeTableController {
         return list;
     }
 
-    // сервис2
-    // ПРИМЕР ССЫЛКИ http://localhost:8080/api/timetable/15
-    @GetMapping("/timetable/{nameOfTheFile}")
-    public String getTimeTable(@PathVariable String nameOfTheFile) {
-        System.out.println("Data: "+ nameOfTheFile);
-        try{
-            ObjectMapper objectMapper=new ObjectMapper();
-            JsonFactory jf=new JsonFactory();
-            JsonParser jp = jf.createParser(new File("Report.json"));
-            List<WaitingQueue> lst=null;
-
-            TypeReference<List<WaitingQueue>> tRef = new TypeReference<List<WaitingQueue>>() {};
-            lst = objectMapper.readValue(jp, tRef);
-            for (WaitingQueue user : lst) {
-                System.out.println(user.toString());
-            }
-
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-
-        if (!nameOfTheFile.equals("Report.json"))
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "entity not found!!"
-            );
-        return nameOfTheFile;
-    }
-
-    // ПРИМЕР ССЫЛКИ http://localhost:8080/api/timetable
-    // И в BODY пишешь непосредственно JSON обхект
-    //{
-    //"name": "782FinlandBay",
-    //"time": "21:58:16",
-    //"day": "12/11/2020",
-    //"type": "CONTAINER",
-    //"weight": 40399.252990944464,
-    //"unload": 6.733208831824077
-    //}
-    @PostMapping("/timetable")
-    public TimeTable postTimeTable(@RequestBody TimeTable timeTable) {
-        System.out.println(timeTable);
-        return timeTable;
-    }
-
-// ПРИМЕР ССЫЛКИ http://localhost:8080/api/timetable/test?name=heeelllooo
+    // сервис2 + сервис 3
+    // возвращает json файлы по имени
     @GetMapping("/timetable/report/json")
-    public void testMethod(/*@RequestParam String name*/){
-        try{
-            ObjectMapper objectMapper=new ObjectMapper();
-            JsonFactory jf=new JsonFactory();
-            JsonParser jp = jf.createParser(new File("Report.json"));
-            List<WaitingQueue> lst=null;
+    public List<? extends Object> getReportDocument(@RequestParam String name) throws IOException {
 
-            TypeReference<List<WaitingQueue>> tRef = new TypeReference<List<WaitingQueue>>() {};
-            lst = objectMapper.readValue(jp, tRef);
-            //здесь уже выводится содержимое джейсона!!!
-            for (WaitingQueue user : lst) {
-                System.out.println(user.toString());
-            }
-
+        final ObjectMapper objectMapper = new ObjectMapper();
+        if (name.equals("Report.json")) {
+            List<WaitingQueue> element = objectMapper.readValue(
+                    new File("Report.json"),
+                    new TypeReference<List<WaitingQueue>>() {
+                    });
+            return element;
+        } else if (name.equals("timeTable.json")) {
+            List<TimeTable> element1 = objectMapper.readValue(
+                    new File("timeTable.json"),
+                    new TypeReference<List<TimeTable>>() {
+                    });
+            return element1;
+        } else {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "entity not found");
         }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        //System.out.println(name);
-        //return name;
     }
 
-
-}
+    // отправляет результаты работы сервиса 3 в json файл
+    //метод выше возвращает также и Report.json
+    @PostMapping("/timetable")
+    public void postTimeTable() throws IOException {
+        for (int i=0; i<10; i++){ //Закыдиваем все судна в очередь
+            WaitingQueue newShip=new WaitingQueue(); //создаём новое судно на каждой итерации
+            shipQueue.add(newShip); //добавляем в очередь
+            List2.add(newShip); //для добавления в json файл
+            ToJSON.serializeReport();
+        }
+        }
+    }

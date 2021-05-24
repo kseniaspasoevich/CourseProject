@@ -4,10 +4,18 @@ import Service1.TimeTable;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationConfig;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationConfig;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 public class FromJSON {
     static void deserializeTimeTable() throws IOException {
@@ -46,6 +54,35 @@ public class FromJSON {
         }
         catch (IOException e){
             e.printStackTrace();
+        }
+
+    }
+
+    static void test() throws IOException {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        List<TimeTable> langList = objectMapper.readValue(
+                new File("timeTable.json"),
+                new TypeReference<List<TimeTable>>(){});
+
+        langList.forEach(x -> System.out.println(x.toString()));
+
+    }
+
+    static void getTypesFromJSON() throws IOException {
+        try {
+            // create object mapper instance
+            ObjectMapper mapper = new ObjectMapper();
+
+            // convert JSON file to map
+            Map<?, ?> map = mapper.readValue(Paths.get("Report.json").toFile(), Map.class);
+
+            // print map entries
+            for (Map.Entry<?, ?> entry : map.entrySet()) {
+                System.out.println(entry.getKey() + "=" + entry.getValue());
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
     }

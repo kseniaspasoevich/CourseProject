@@ -8,8 +8,11 @@ import java.io.IOException;
 public class MainService3 {
     public static void main(String[] args) throws IOException {
         System.out.println("Data from JSON file: \n");
-        ToJSON.serializeReport();
-        FromJSON.deserializeReport();
-        Unloading.getUnloadingReports(10);
+        //ToJSON.serializeReport();
+        //FromJSON.deserializeReport();
+        //Unloading.getUnloadingReports(10);
+        //FromJSON.test();
+        //FromJSON.getTypesFromJSON();
+        Unloading.simulate();
     }
 }

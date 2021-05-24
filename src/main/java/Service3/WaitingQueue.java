@@ -3,14 +3,19 @@ package Service3;
 import Service1.RandomFieldsGenerator;
 import Service1.TimeTable;
 import Service1.Type;
+import Service2.ToJSON;
 
+import java.io.IOException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static Service2.Global.List2;
+import static Service2.Global.shipQueue;
+
 //судно прибывает в порт, с текущими данными мы его закидиваем в очередь
 //а потом и в новый json файл report.json
-public class WaitingQueue {
+public class WaitingQueue implements Runnable {
     private String  nameOfTheShip;
     private Time estimatedTimeOfArrival;
     private double deviationInArrival;
@@ -25,26 +30,24 @@ public class WaitingQueue {
     public double delayUnload; //задержка разгрузки
     public double penalty;    //штраф
 
-    public WaitingQueue() {}
-
-    public WaitingQueue(String nameOfTheShip, Time estimatedTimeOfArrival, double deviationInArrival,
-                        Time definiteTimeOfArrival, Time waitingInQueue, Time beginningOfUnloading,
-                        LocalDate estimatedDayOfArrival, LocalDate realDayOfArrival,
-                        Type typeOfTheShip, double exactWeight, double estimatedTimeOfUnload,
-                        double delayUnload, double penalty) {
-        this.nameOfTheShip = nameOfTheShip;
-        this.estimatedTimeOfArrival = estimatedTimeOfArrival;
-        this.deviationInArrival = deviationInArrival;
-        this.definiteTimeOfArrival = definiteTimeOfArrival;
-        this.WaitingInQueue = waitingInQueue;
-        this.beginningOfUnloading = beginningOfUnloading;
-        this.estimatedDayOfArrival = estimatedDayOfArrival;
-        this.RealDayOfArrival = realDayOfArrival;
+    public WaitingQueue(Type typeOfTheShip) {
         this.typeOfTheShip = typeOfTheShip;
-        this.exactWeight = exactWeight;
-        this.estimatedTimeOfUnload = estimatedTimeOfUnload;
-        this.delayUnload = delayUnload;
-        this.penalty = penalty;
+    }
+
+    public WaitingQueue(){
+        this.nameOfTheShip=RandomFieldsGenerator.getName();
+        this.estimatedTimeOfArrival=RandomFieldsGenerator.getTime();
+        this.deviationInArrival=ExecutionOfService3.getArrivalDeviation();
+        this.definiteTimeOfArrival=ExecutionOfService3.getRealTimeOfArrival(estimatedTimeOfArrival, deviationInArrival);
+        this.estimatedDayOfArrival=RandomFieldsGenerator.getDay();
+        this.RealDayOfArrival=ExecutionOfService3.getRealDayOfArrival(estimatedDayOfArrival, definiteTimeOfArrival, deviationInArrival);
+        this.typeOfTheShip=RandomFieldsGenerator.getType();
+        this.exactWeight=RandomFieldsGenerator.getWeight(typeOfTheShip);
+        this.estimatedTimeOfUnload=RandomFieldsGenerator.getUnload(typeOfTheShip, exactWeight);
+        this.WaitingInQueue=ExecutionOfService3.getTimeOfWaitingForUnloading(typeOfTheShip, estimatedTimeOfUnload);
+        this.beginningOfUnloading=ExecutionOfService3.getBeginningUnloading(WaitingInQueue, definiteTimeOfArrival);
+        this.delayUnload=ExecutionOfService3.getUnloadDelay();
+        this.penalty=ExecutionOfService3.getPenalty(delayUnload);
     }
 
     public String getNameOfTheShip() {
@@ -167,19 +170,44 @@ public class WaitingQueue {
     @Override
     public String toString() {
         return "WaitingQueue{" +
-                "nameOfTheShip='" + nameOfTheShip + "\n" +
-                ", estimatedTimeOfArrival=" + estimatedTimeOfArrival + "\n" +
-                ", deviationInArrival=" + deviationInArrival +"\n" +
-                ", definiteTimeOfArrival=" + definiteTimeOfArrival +"\n" +
-                ", WaitingInQueue=" + WaitingInQueue +"\n" +
-                ", beginningOfUnloading=" + beginningOfUnloading +"\n" +
-                ", estimatedDayOfArrival=" + estimatedDayOfArrival +"\n" +
-                ", RealDayOfArrival=" + RealDayOfArrival +"\n" +
-                ", typeOfTheShip=" + typeOfTheShip +"\n" +
-                ", exactWeight=" + exactWeight +"\n" +
-                ", estimatedTimeOfUnload=" + estimatedTimeOfUnload +"\n" +
-                ", delayUnload=" + delayUnload +"\n" +
-                ", penalty=" + penalty +"\n" +
+                "nameOfTheShip='" + nameOfTheShip + "\n"+
+                ", estimatedTimeOfArrival=" + estimatedTimeOfArrival + "\n"+
+                ", deviationInArrival=" + deviationInArrival +"\n"+
+                ", definiteTimeOfArrival=" + definiteTimeOfArrival + "\n"+
+                ", WaitingInQueue=" + WaitingInQueue + "\n"+
+                ", beginningOfUnloading=" + beginningOfUnloading + "\n"+
+                ", estimatedDayOfArrival=" + estimatedDayOfArrival + "\n"+
+                ", RealDayOfArrival=" + RealDayOfArrival +"\n"+
+                ", typeOfTheShip=" + typeOfTheShip +"\n"+
+                ", exactWeight=" + exactWeight +"\n"+
+                ", estimatedTimeOfUnload=" + estimatedTimeOfUnload +"\n"+
+                ", delayUnload=" + delayUnload +"\n"+
+                ", penalty=" + penalty +"\n"+
                 '}';
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Unloading started: ");
+        for (int i=0; i<10; i++){ //Закыдиваем все судна в очередь
+            WaitingQueue newShip=new WaitingQueue(); //создаём новое судно на каждой итерации
+            shipQueue.add(newShip); //добавляем в очередь
+//            List2.add(newShip); //для добавления в json файл
+            System.out.println("Thread" + Thread.currentThread().getId() + "   " + shipQueue.size());
+//            try {
+//                ToJSON.serializeReport();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+        }
+        //System.out.println("Unloading started: ");
+
+        //извлекаем одно судно за другим и получаем отчёт о разгрузке
+        while (!(shipQueue.isEmpty())){
+            WaitingQueue ship2= shipQueue.poll();
+            System.out.println("Thread" + Thread.currentThread().getId() + " Ship:" + ship2.nameOfTheShip);
+            System.out.println(ship2);
+            System.out.println("-------------------------------");
+        }
     }
 }
