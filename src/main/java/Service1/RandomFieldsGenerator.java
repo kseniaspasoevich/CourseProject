@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -52,7 +53,7 @@ public class RandomFieldsGenerator {
     }
 
     public static double getWeight(Type type) {
-        double limit = switch (type){
+        double limit = switch (type) {
             case CONTAINER -> 50_000.0;
             case LIQUID -> 500_000.0;
             case BULK -> 990_000.0;
@@ -61,11 +62,11 @@ public class RandomFieldsGenerator {
     }
 
     public static double getUnload(Type type, double weight) {
-        double carryingCapacityCrane = switch (type){
+        double carryingCapacityCrane = switch (type) {
             case CONTAINER -> 100.0;
             case LIQUID -> 500.0;
             case BULK -> 1000.0;
         };
-        return (weight/carryingCapacityCrane)/60.0; //конвертируем в час
+        return 0.5 * (weight / carryingCapacityCrane) / 60.0; //конвертируем в час
     }
 }

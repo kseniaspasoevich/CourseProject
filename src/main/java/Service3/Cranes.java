@@ -31,6 +31,7 @@ public class Cranes implements Runnable {
 
             double time = ship.getEstimatedTimeOfUnload() + ship.getDelayUnload();
 
+            //обратный счёт до окончания разгрузки
             while (time > 0) {
                 System.out.println("---- Thread Id: " + Thread.currentThread().getId() + " " + ship.getNameOfTheShip() + " осталось время " + time);
                 for (int i = 0; i < 55 && time > 0; i++) {

@@ -1,6 +1,5 @@
 package restcontroller;
 
-import com.sun.tools.javac.Main;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

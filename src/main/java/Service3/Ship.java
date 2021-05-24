@@ -24,10 +24,6 @@ public class Ship {
     private Time WaitingInQueue; //время ожидания в очереди
     @Getter @Setter
     private Time beginningOfUnloading; //начало разгрузки3
-
-    private LocalDate estimatedDayOfArrival;
-    private LocalDate RealDayOfArrival;
-
     @Getter @Setter
     private Type typeOfTheShip;
     @Getter @Setter
@@ -38,6 +34,8 @@ public class Ship {
     public double delayUnload; //задержка разгрузки
     @Getter @Setter
     public double penalty;    //штраф
+    private LocalDate estimatedDayOfArrival;
+    private LocalDate RealDayOfArrival;
 
     public Ship(){
         this.nameOfTheShip=RandomFieldsGenerator.getName();
@@ -45,7 +43,8 @@ public class Ship {
         this.deviationInArrival=ExecutionOfService3.getArrivalDeviation();
         this.definiteTimeOfArrival=ExecutionOfService3.getRealTimeOfArrival(estimatedTimeOfArrival, deviationInArrival);
         this.estimatedDayOfArrival=RandomFieldsGenerator.getDay();
-        this.RealDayOfArrival=ExecutionOfService3.getRealDayOfArrival(estimatedDayOfArrival, definiteTimeOfArrival, deviationInArrival);
+        this.RealDayOfArrival=ExecutionOfService3.getRealDayOfArrival(estimatedDayOfArrival,
+                definiteTimeOfArrival, deviationInArrival);
         this.typeOfTheShip=RandomFieldsGenerator.getType();
         this.exactWeight=RandomFieldsGenerator.getWeight(typeOfTheShip);
         this.estimatedTimeOfUnload=RandomFieldsGenerator.getUnload(typeOfTheShip, exactWeight);
