@@ -1,15 +1,10 @@
 package Service3;
 
-import Service1.RandomFieldsGenerator;
 import Service1.Type;
 
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Queue;
-import java.util.Random;
-
-import static Service2.Global.shipQueue;
 
 public class ExecutionOfService3 {
 

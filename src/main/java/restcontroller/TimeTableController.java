@@ -1,21 +1,18 @@
 package restcontroller;
 
-import Service1.RandomFieldsGenerator;
 import Service1.TimeTable;
-import Service1.Type;
 import Service2.ToJSON;
-import Service3.ExecutionOfService3;
-import Service3.WaitingQueue;
+import Service3.Ship;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Time;
-import java.time.LocalDate;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +38,9 @@ public class TimeTableController {
 
         final ObjectMapper objectMapper = new ObjectMapper();
         if (name.equals("Report.json")) {
-            List<WaitingQueue> element = objectMapper.readValue(
+            List<Ship> element = objectMapper.readValue(
                     new File("Report.json"),
-                    new TypeReference<List<WaitingQueue>>() {
+                    new TypeReference<List<Ship>>() {
                     });
             return element;
         } else if (name.equals("timeTable.json")) {
@@ -62,12 +59,19 @@ public class TimeTableController {
     // отправляет результаты работы сервиса 3 в json файл
     //метод выше возвращает также и Report.json
     @PostMapping("/timetable")
-    public void postTimeTable() throws IOException {
-        for (int i=0; i<10; i++){ //Закыдиваем все судна в очередь
-            WaitingQueue newShip=new WaitingQueue(); //создаём новое судно на каждой итерации
-            shipQueue.add(newShip); //добавляем в очередь
-            List2.add(newShip); //для добавления в json файл
-            ToJSON.serializeReport();
+    public List<Ship> postTimeTable() throws IOException {
+        List<Ship> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) { //Закыдиваем все судна в очередь
+            Ship newShip = new Ship(); //создаём новое судно на каждой итерации
+            list.add(newShip); //добавляем в очередь
         }
-        }
+        ToJSON.serializeReport(list);
+        return list;
     }
+
+    @PostMapping("/timetable/custom")
+    public ResponseEntity postTimeTableCustom(@RequestBody List<Ship> ships) throws IOException {
+        ToJSON.serializeReport(ships);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+}

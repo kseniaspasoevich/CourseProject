@@ -4,15 +4,11 @@ import Service1.TimeTable;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationConfig;
-import java.io.FileInputStream;
+
 import java.io.IOException;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
@@ -43,11 +39,11 @@ public class FromJSON {
             ObjectMapper objectMapper=new ObjectMapper();
             JsonFactory jf=new JsonFactory();
             JsonParser jp = jf.createParser(new File("Report.json"));
-            List<WaitingQueue> lst=null;
+            List<Ship> lst=null;
 
-            TypeReference<List<WaitingQueue>> tRef = new TypeReference<List<WaitingQueue>>() {};
+            TypeReference<List<Ship>> tRef = new TypeReference<List<Ship>>() {};
             lst = objectMapper.readValue(jp, tRef);
-            for (WaitingQueue user : lst) {
+            for (Ship user : lst) {
                 System.out.println(user.toString());
             }
 

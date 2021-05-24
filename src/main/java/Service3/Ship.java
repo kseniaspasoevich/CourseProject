@@ -1,40 +1,45 @@
 package Service3;
 
 import Service1.RandomFieldsGenerator;
-import Service1.TimeTable;
 import Service1.Type;
-import Service2.ToJSON;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.io.IOException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static Service2.Global.List2;
-import static Service2.Global.shipQueue;
-
 //судно прибывает в порт, с текущими данными мы его закидиваем в очередь
 //а потом и в новый json файл report.json
-public class WaitingQueue implements Runnable {
+public class Ship {
+    @Getter @Setter
     private String  nameOfTheShip;
+    @Getter @Setter
     private Time estimatedTimeOfArrival;
+    @Getter @Setter
     private double deviationInArrival;
+    @Getter @Setter
     private Time definiteTimeOfArrival;
+    @Getter @Setter
     private Time WaitingInQueue; //время ожидания в очереди
+    @Getter @Setter
     private Time beginningOfUnloading; //начало разгрузки3
+
     private LocalDate estimatedDayOfArrival;
     private LocalDate RealDayOfArrival;
+
+    @Getter @Setter
     private Type typeOfTheShip;
+    @Getter @Setter
     private double  exactWeight;
+    @Getter @Setter
     public double estimatedTimeOfUnload;
+    @Getter @Setter
     public double delayUnload; //задержка разгрузки
+    @Getter @Setter
     public double penalty;    //штраф
 
-    public WaitingQueue(Type typeOfTheShip) {
-        this.typeOfTheShip = typeOfTheShip;
-    }
-
-    public WaitingQueue(){
+    public Ship(){
         this.nameOfTheShip=RandomFieldsGenerator.getName();
         this.estimatedTimeOfArrival=RandomFieldsGenerator.getTime();
         this.deviationInArrival=ExecutionOfService3.getArrivalDeviation();
@@ -50,44 +55,12 @@ public class WaitingQueue implements Runnable {
         this.penalty=ExecutionOfService3.getPenalty(delayUnload);
     }
 
-    public String getNameOfTheShip() {
-        return nameOfTheShip;
-    }
-
-    public void setNameOfTheShip(String nameOfTheShip) {
-        this.nameOfTheShip = nameOfTheShip;
-    }
-
-    public Time getEstimatedTimeOfArrival() {
-        return estimatedTimeOfArrival;
-    }
-
-    public void setEstimatedTimeOfArrival(Time estimatedTimeOfArrival) {
-        this.estimatedTimeOfArrival = estimatedTimeOfArrival;
-    }
-
-    public Time getDefiniteTimeOfArrival() {
-        return definiteTimeOfArrival;
-    }
-
-    public void setDefiniteTimeOfArrival(Time definiteTimeOfArrival) {
-        this.definiteTimeOfArrival = definiteTimeOfArrival;
-    }
-
-    public double getDeviationInArrival() {
-        return deviationInArrival;
-    }
-
-    public void setDeviationInArrival(double deviationInArrival) {
-        this.deviationInArrival = deviationInArrival;
-    }
 
     public String getEstimatedDayOfArrival() {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return this.estimatedDayOfArrival.format(formatter);
     }
-
     public void setEstimatedDayOfArrival(Object estimatedDayOfArrival) {
         if (estimatedDayOfArrival instanceof String) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -101,7 +74,6 @@ public class WaitingQueue implements Runnable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return this.RealDayOfArrival.format(formatter);
     }
-
     public void setRealDayOfArrival(Object RealDayOfArrival) {
         if (RealDayOfArrival instanceof String) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -111,65 +83,9 @@ public class WaitingQueue implements Runnable {
         }
     }
 
-    public Type getTypeOfTheShip() {
-        return typeOfTheShip;
-    }
-
-    public void setTypeOfTheShip(Type typeOfTheShip) {
-        this.typeOfTheShip = typeOfTheShip;
-    }
-
-    public double getExactWeight() {
-        return exactWeight;
-    }
-
-    public void setExactWeight(double exactWeight) {
-        this.exactWeight = exactWeight;
-    }
-
-    public double getEstimatedTimeOfUnload() {
-        return estimatedTimeOfUnload;
-    }
-
-    public void setEstimatedTimeOfUnload(double estimatedTimeOfUnload) {
-        this.estimatedTimeOfUnload = estimatedTimeOfUnload;
-    }
-
-    public Time getWaitingInQueue() {
-        return WaitingInQueue;
-    }
-
-    public void setWaitingInQueue(Time waitingInQueue) {
-        WaitingInQueue = waitingInQueue;
-    }
-
-    public Time getBeginningOfUnloading() {
-        return beginningOfUnloading;
-    }
-
-    public void setBeginningOfUnloading(Time beginningOfUnloading) {
-        this.beginningOfUnloading = beginningOfUnloading;
-    }
-
-    public double getDelayUnload() {
-        return delayUnload;
-    }
-
-    public void setDelayUnload(double delayUnload) {
-        this.delayUnload = delayUnload;
-    }
-
-    public double getPenalty() {
-        return penalty;
-    }
-
-    public void setPenalty(double penalty) {
-        this.penalty = penalty;
-    }
-
     @Override
     public String toString() {
-        return "WaitingQueue{" +
+        return "Ship{" +
                 "nameOfTheShip='" + nameOfTheShip + "\n"+
                 ", estimatedTimeOfArrival=" + estimatedTimeOfArrival + "\n"+
                 ", deviationInArrival=" + deviationInArrival +"\n"+
@@ -186,28 +102,4 @@ public class WaitingQueue implements Runnable {
                 '}';
     }
 
-    @Override
-    public void run() {
-        System.out.println("Unloading started: ");
-        for (int i=0; i<10; i++){ //Закыдиваем все судна в очередь
-            WaitingQueue newShip=new WaitingQueue(); //создаём новое судно на каждой итерации
-            shipQueue.add(newShip); //добавляем в очередь
-//            List2.add(newShip); //для добавления в json файл
-            System.out.println("Thread" + Thread.currentThread().getId() + "   " + shipQueue.size());
-//            try {
-//                ToJSON.serializeReport();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-        }
-        //System.out.println("Unloading started: ");
-
-        //извлекаем одно судно за другим и получаем отчёт о разгрузке
-        while (!(shipQueue.isEmpty())){
-            WaitingQueue ship2= shipQueue.poll();
-            System.out.println("Thread" + Thread.currentThread().getId() + " Ship:" + ship2.nameOfTheShip);
-            System.out.println(ship2);
-            System.out.println("-------------------------------");
-        }
-    }
 }

@@ -2,7 +2,6 @@ package Service3;
 
 import Service1.Type;
 import Service2.ToJSON;
-import org.springframework.cglib.beans.BulkBean;
 
 import java.io.IOException;
 import static Service2.Global.*;
@@ -28,8 +27,8 @@ public class Unloading {
 
     public static void getUnloadingReports(int amountOfShips) throws IOException {
         for (int i=0; i<amountOfShips; i++){ //Закыдиваем все судна в очередь
-            WaitingQueue newShip=new WaitingQueue(); //создаём новое судно на каждой итерации
-            shipQueue.add(newShip); //добавляем в очередь
+            Ship newShip=new Ship(); //создаём новое судно на каждой итерации
+            shipQueueGlobal.add(newShip); //добавляем в очередь
             List2.add(newShip); //для добавления в json файл
             ToJSON.serializeReport();
         }
@@ -37,24 +36,36 @@ public class Unloading {
         System.out.println("Unloading started: ");
 
         //извлекаем одно судно за другим и получаем отчёт о разгрузке
-        while (!(shipQueue.isEmpty())){
-            WaitingQueue ship2= shipQueue.peek();
+        while (!(shipQueueGlobal.isEmpty())){
+            Ship ship2= shipQueueGlobal.peek();
             System.out.println(ship2);
-            shipQueue.remove();
+            shipQueueGlobal.remove();
             System.out.println("-------------------------------");
         }
     }
 
-    public static void simulate(){
-        WaitingQueue unloader1 = new WaitingQueue(Type.CONTAINER);
-        WaitingQueue unloader2 = new WaitingQueue(Type.LIQUID);
-        WaitingQueue unloader3 = new WaitingQueue(Type.BULK);
-        Thread t1 = new Thread(unloader1);
-        Thread t2 = new Thread(unloader2);
-        Thread t3 = new Thread(unloader3);
+    public static void simulate() {
+        Cranes unloader1 = new Cranes(Type.CONTAINER);
+        Cranes unloader2 = new Cranes(Type.LIQUID);
+        Cranes unloader3 = new Cranes(Type.BULK);
+        Thread t1 = new Thread(unloader1, "CONTAINER");
+        Thread t2 = new Thread(unloader2, "LIQUID");
+        Thread t3 = new Thread(unloader3, "BULK");
+        Thread generator = new Thread(new ShipGenerator());
+        generator.start();
+
         t1.start();
         t2.start();
         t3.start();
+
+        try {
+            t1.join();
+            t2.join();
+            t3.join();
+            ToJSON.serializeReport();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

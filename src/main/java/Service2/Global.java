@@ -9,8 +9,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Global {
     public static ArrayList<TimeTable> List1 = new ArrayList<>();
-    public static ArrayList<WaitingQueue> List2 = new ArrayList<>();
-//    public static Queue<WaitingQueue> shipQueue=new LinkedList<>();
-    public static Queue<WaitingQueue> shipQueue = new ConcurrentLinkedQueue<>();
+    public static ArrayList<Ship> List2 = new ArrayList<>();
+    public static Queue<Ship> shipQueueGlobal =new LinkedList<>();
+  //  public static Queue<Ship> shipQueueGlobal = new ConcurrentLinkedQueue<>();
 }
 

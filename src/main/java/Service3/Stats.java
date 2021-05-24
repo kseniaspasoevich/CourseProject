@@ -1,7 +1,10 @@
 package Service3;
 
+import lombok.Data;
+
 import java.sql.Time;
 
+@Data
 public class Stats {
     private int amountOfUnloadedShips;
     //private int averageLengthOfQueue;
@@ -20,53 +23,6 @@ public class Stats {
         this.amountOfNeededCranes = DoStatistics.getNeededCranes();
     }
 
-    public int getAmountOfUnloadedShips() {
-        return amountOfUnloadedShips;
-    }
-
-    public void setAmountOfUnloadedShips(int amountOfUnloadedShips) {
-        this.amountOfUnloadedShips = amountOfUnloadedShips;
-    }
-
-    public Time getTimeOfWaitingInQueue() {
-        return timeOfWaitingInQueue;
-    }
-
-    public void setTimeOfWaitingInQueue(Time timeOfWaitingInQueue) {
-        this.timeOfWaitingInQueue = timeOfWaitingInQueue;
-    }
-
-    public double getMaxUnloadDelay() {
-        return maxUnloadDelay;
-    }
-
-    public void setMaxUnloadDelay(double maxUnloadDelay) {
-        this.maxUnloadDelay = maxUnloadDelay;
-    }
-
-    public double getAverageUnloadDelay() {
-        return averageUnloadDelay;
-    }
-
-    public void setAverageUnloadDelay(double averageUnloadDelay) {
-        this.averageUnloadDelay = averageUnloadDelay;
-    }
-
-    public double getMaximumPenalty() {
-        return maximumPenalty;
-    }
-
-    public void setMaximumPenalty(double maximumPenalty) {
-        this.maximumPenalty = maximumPenalty;
-    }
-
-    public int getAmountOfNeededCranes() {
-        return amountOfNeededCranes;
-    }
-
-    public void setAmountOfNeededCranes(int amountOfNeededCranes) {
-        this.amountOfNeededCranes = amountOfNeededCranes;
-    }
 
     @Override
     public String toString() {
