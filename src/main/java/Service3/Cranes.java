@@ -18,12 +18,9 @@ public class Cranes implements Runnable {
     public void run() {
         while (true) {
             Ship ship = shipQueue.get(this.type);
-            if (ship == null && !shipQueue.isGenerated()){
+            if (ship == null){
                 System.out.println("!!!!!!!!!!!!!!!!!!!! ПОТОК " + Thread.currentThread().getName() + " ЗАВЕРШИЛСЯ ");
                 return;
-            } else if (ship == null){
-                Thread.sleep(100);
-                continue;
             }
 
             System.out.println("-- Thread Id: " + Thread.currentThread().getId() + " Thread Name: " + Thread.currentThread().getName() +
