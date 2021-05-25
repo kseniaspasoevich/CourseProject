@@ -9,12 +9,11 @@ import static Service2.Global.*;
 public class Unloading {
     public static void simulate(int amount) {
 
+        // ГЕНЕРАЦИЯ НОВЫХ СУДОВ
         ShipQueue shipQueue = ShipQueue.getInstance();
-
         for (int i = 0; i < amount; i++){
             shipQueue.put();
         }
-
 
         Cranes unloader1 = new Cranes(Type.CONTAINER);
         Cranes unloader2 = new Cranes(Type.LIQUID);

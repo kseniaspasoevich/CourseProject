@@ -33,7 +33,7 @@ public class Cranes implements Runnable {
                 System.out.println("---- Thread Id: " + Thread.currentThread().getId() + " " + ship.getNameOfTheShip() + " осталось время " + time);
                 for (int i = 0; i < 55 && time > 0; i++) {
                     time -= 0.1;
-                    Thread.sleep(10);
+                    Thread.sleep(1);
                 }
             }
             System.out.println("-- Thread Id: " + Thread.currentThread().getId() + " " + ship.getNameOfTheShip() + " Закончил разгрузку");
